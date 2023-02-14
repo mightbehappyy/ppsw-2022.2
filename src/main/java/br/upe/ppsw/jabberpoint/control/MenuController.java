@@ -1,4 +1,7 @@
-package br.upe.ppsw.jabberpoint.apresentacao;
+package br.upe.ppsw.jabberpoint.control;
+import br.upe.ppsw.jabberpoint.model.Presentation;
+import br.upe.ppsw.jabberpoint.view.AboutBox;
+import br.upe.ppsw.jabberpoint.model.Accessor;
 
 import java.awt.Frame;
 import java.awt.Menu;

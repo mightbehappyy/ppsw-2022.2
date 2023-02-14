@@ -1,5 +1,5 @@
-package br.upe.ppsw.jabberpoint.apresentacao;
-
+package br.upe.ppsw.jabberpoint.control;
+import br.upe.ppsw.jabberpoint.model.Presentation;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 

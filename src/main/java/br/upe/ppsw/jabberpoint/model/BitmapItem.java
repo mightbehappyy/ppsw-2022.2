@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.apresentacao;
+package br.upe.ppsw.jabberpoint.model;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -8,7 +8,9 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.springframework.util.ResourceUtils;
 
-public class BitmapItem extends SlideItem {
+import br.upe.ppsw.jabberpoint.view.Style;
+
+public class BitmapItem extends SlideItem{
 
   private BufferedImage bufferedImage;
   private String imageName;
@@ -54,4 +56,5 @@ public class BitmapItem extends SlideItem {
   public String toString() {
     return "BitmapItem[" + getLevel() + "," + imageName + "]";
   }
+
 }
