@@ -8,10 +8,10 @@
  🚧 Estudo aplicado de padrões de projeto de software 🚀 em construção... 🚧
 </h4>
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/upe-garanhuns/ppsw?color=%2304D361">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/upe-garanhuns/ppsw">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/mightbehappyy/ppsw-2022.2">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/mightbehappyy/ppsw-2022.2?style=flat-square">
   <a href="https://github.com/upe-garanhuns/ppsw/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/upe-garanhuns/ppsw">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mightbehappyy/ppsw-2022.2">
   </a>
 </p>
 
