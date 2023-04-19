@@ -23,14 +23,14 @@ public class SlideViewerComponent extends JComponent {
   private static final int YPOS = 20;
 
   private Slide slide;
-  private Font labelFont = null;
-  private Presentation presentation = null;
-  private JFrame frame = null;
+  private final Font labelFont;
+  private Presentation presentation;
+  private JFrame frame;
 
   public SlideViewerComponent(Presentation pres, JFrame frame) {
     setBackground(BGCOLOR);
-    presentation = pres;
-    labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
+    this.presentation = pres;
+    this.labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
     this.frame = frame;
   }
 
@@ -47,7 +47,7 @@ public class SlideViewerComponent extends JComponent {
     this.presentation = presentation;
     this.slide = data;
     repaint();
-    frame.setTitle(presentation.getTitle());
+    this.frame.setTitle(presentation.getTitle());
   }
 
   public void paintComponent(Graphics g) {

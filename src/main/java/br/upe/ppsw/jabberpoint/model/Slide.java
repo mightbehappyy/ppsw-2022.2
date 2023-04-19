@@ -6,6 +6,7 @@ import java.awt.image.ImageObserver;
 import java.util.Vector;
 
 import br.upe.ppsw.jabberpoint.view.Style;
+import br.upe.ppsw.jabberpoint.view.createStyles;
 
 public class Slide {
 
@@ -16,7 +17,7 @@ public class Slide {
   protected Vector<SlideItem> items;
 
   public Slide() {
-    items = new Vector<SlideItem>();
+    items = new Vector<>();
   }
 
   public void append(SlideItem anItem) {
@@ -36,7 +37,7 @@ public class Slide {
   }
 
   public SlideItem getSlideItem(int number) {
-    return (SlideItem) items.elementAt(number);
+    return items.elementAt(number);
   }
 
   public Vector<SlideItem> getSlideItems() {
@@ -46,27 +47,28 @@ public class Slide {
   public int getSize() {
     return items.size();
   }
+  private int organize(SlideItem slideItem, int y, Graphics g, Rectangle area, ImageObserver view)
+  {
+    Style style = createStyles.getStyle(slideItem.getLevel());
+    slideItem.draw(area.x, y, getScale(area), g, style, view);
+    //define o level de cada item.
+    return slideItem.getBoundingBox(g, view, getScale(area), style).height;
+  }
 
+  //Desenha o conteudo dos slides nas telas.
   public void draw(Graphics g, Rectangle area, ImageObserver view) {
-    float scale = getScale(area);
-
     int y = area.y;
 
-    SlideItem slideItem = this.title;
-    Style style = Style.getStyle(slideItem.getLevel());
-    slideItem.draw(area.x, y, scale, g, style, view);
+    //Desenha o titulo
+    y += organize(new TextItem(0, getTitle()), y, g, area, view);
 
-    y += slideItem.getBoundingBox(g, view, scale, style).height;
-
-    for (int number = 0; number < getSize(); number++) {
-      slideItem = (SlideItem) getSlideItems().elementAt(number);
-
-      style = Style.getStyle(slideItem.getLevel());
-      slideItem.draw(area.x, y, scale, g, style, view);
-
-      y += slideItem.getBoundingBox(g, view, scale, style).height;
+    //Desenha o resto 
+    for (int number = 0; number < this.getSize(); number++)
+    {
+      y += organize(getSlideItems().elementAt(number), y, g, area, view);
     }
-  }
+    }
+
 
   private float getScale(Rectangle area) {
     return Math.min(((float) area.width) / ((float) WIDTH),
