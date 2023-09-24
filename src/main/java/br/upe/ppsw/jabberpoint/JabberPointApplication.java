@@ -11,7 +11,6 @@ import br.upe.ppsw.jabberpoint.model.Accessor;
 import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.view.SlideViewerFrame;
 import br.upe.ppsw.jabberpoint.view.Style;
-import br.upe.ppsw.jabberpoint.view.createStyles;
 import br.upe.ppsw.jabberpoint.control.XMLAccessor;
 
 @SpringBootApplication
@@ -30,7 +29,7 @@ public class JabberPointApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-  createStyles.setStyles();
+    Style.createStyles();
 
     Presentation presentation = new Presentation();
 

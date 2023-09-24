@@ -16,12 +16,12 @@ public class KeyController extends KeyAdapter {
       case KeyEvent.VK_PAGE_DOWN:
       case KeyEvent.VK_DOWN:
       case KeyEvent.VK_ENTER:
-      case KeyEvent.VK_PLUS:
+      case '+':
         presentation.nextSlide();
         break;
       case KeyEvent.VK_PAGE_UP:
       case KeyEvent.VK_UP:
-      case KeyEvent.VK_MINUS:
+      case '-':
         presentation.prevSlide();
         break;
       case 'q':
