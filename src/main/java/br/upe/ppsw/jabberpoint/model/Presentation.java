@@ -80,7 +80,7 @@ public class Presentation {
     return getSlide(currentSlideNumber);
   }
 
-  public void exit(int n) {
-    System.exit(n);
+  public void exit() {
+    System.exit(0);
   }
 }
