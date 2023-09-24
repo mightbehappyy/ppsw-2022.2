@@ -1,4 +1,5 @@
 package br.upe.ppsw.jabberpoint.control;
+
 import br.upe.ppsw.jabberpoint.model.Presentation;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -11,6 +12,7 @@ public class KeyController extends KeyAdapter {
     presentation = p;
   }
 
+  @Override
   public void keyPressed(KeyEvent keyEvent) {
     switch (keyEvent.getKeyCode()) {
       case KeyEvent.VK_PAGE_DOWN:

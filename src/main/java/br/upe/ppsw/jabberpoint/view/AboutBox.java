@@ -5,6 +5,10 @@ import javax.swing.JOptionPane;
 
 public class AboutBox {
 
+  private AboutBox() {
+
+  }
+
   public static void show(Frame parent) {
     JOptionPane.showMessageDialog(parent,
         "JabberPoint é um programa de apresentação de slides básico escrito em Java(tm).\n"

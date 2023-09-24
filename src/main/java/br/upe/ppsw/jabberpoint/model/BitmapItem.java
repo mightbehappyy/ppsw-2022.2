@@ -7,13 +7,16 @@ import java.awt.image.ImageObserver;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.springframework.util.ResourceUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import br.upe.ppsw.jabberpoint.view.Style;
 
-public class BitmapItem extends SlideItem{
+public class BitmapItem extends SlideItem {
 
   private BufferedImage bufferedImage;
   private String imageName;
+  private static final Logger logger = LoggerFactory.getLogger(BitmapItem.class);
 
   protected static final String FILE = "Arquivo ";
   protected static final String NOTFOUND = " não encontrado";
@@ -26,7 +29,7 @@ public class BitmapItem extends SlideItem{
     try {
       bufferedImage = ImageIO.read(ResourceUtils.getFile(imageName).getAbsoluteFile());
     } catch (IOException e) {
-      System.err.println(FILE + imageName + NOTFOUND);
+      logger.error("{} {} {}", FILE, imageName, NOTFOUND);
     }
 
   }
