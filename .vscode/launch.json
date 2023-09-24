@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-JabberPointApplication<jabber-point>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "br.upe.ppsw.jabberpoint.JabberPointApplication",
+      "projectName": "jabber-point",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

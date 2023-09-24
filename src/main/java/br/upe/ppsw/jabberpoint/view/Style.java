@@ -10,8 +10,8 @@ public class Style {
   private static final String FONTNAME = "Helvetica";
   public int indent;
   public Color color;
-  Font font;
-  int fontSize;
+  public Font font;
+  public int fontSize;
   public int leading;
 
   public static void createStyles() {
