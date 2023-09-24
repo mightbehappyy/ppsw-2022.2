@@ -9,8 +9,6 @@ import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.MenuShortcut;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import org.springframework.util.ResourceUtils;
@@ -97,116 +95,106 @@ public class MenuController extends MenuBar {
   }
 
   public void createOpenMenuButton() {
-    this.fileMenu.add(this.menuItem = mkMenuItem(OPEN));
+    this.menuItem = mkMenuItem(OPEN);
+    this.fileMenu.add(this.menuItem);
   }
 
   public void openMenuButtonListener() {
-    this.menuItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent actionEvent) {
-        presentation.clear();
+    this.menuItem.addActionListener(actionEvent -> {
 
-        try {
-          xmlAccessor.loadFile(presentation, ResourceUtils.getFile(TESTFILE).getAbsolutePath());
-          presentation.setSlideNumber(0);
-        } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
-        }
+      presentation.clear();
 
-        parent.repaint();
+      try {
+        xmlAccessor.loadFile(presentation, ResourceUtils.getFile(TESTFILE).getAbsolutePath());
+        presentation.setSlideNumber(0);
+      } catch (IOException exc) {
+        JOptionPane.showMessageDialog(parent, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
       }
+
+      parent.repaint();
+
     });
   }
 
   public void createNewMenuButton() {
-    this.fileMenu.add(this.menuItem = mkMenuItem(NEW));
+    this.menuItem = mkMenuItem(NEW);
+    this.fileMenu.add(this.menuItem);
   }
 
   public void newMenuButtonListener() {
-    this.menuItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent actionEvent) {
-        presentation.clear();
-        parent.repaint();
-      }
+    this.menuItem.addActionListener(actionEvent -> {
+      presentation.clear();
+      parent.repaint();
     });
   }
 
   public void createSaveMenuButton() {
-    this.fileMenu.add(this.menuItem = mkMenuItem(SAVE));
+    this.menuItem = mkMenuItem(SAVE);
+    this.fileMenu.add(this.menuItem);
   }
 
   public void saveMenuButtonListener() {
-    this.menuItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        try {
-          xmlAccessor.saveFile(presentation, SAVEFILE);
-        } catch (IOException exc) {
-          JOptionPane.showMessageDialog(parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
-        }
+    this.menuItem.addActionListener(actionEvent -> {
+      try {
+        xmlAccessor.saveFile(presentation, SAVEFILE);
+      } catch (IOException exc) {
+        JOptionPane.showMessageDialog(parent, IOEX + exc, SAVEERR, JOptionPane.ERROR_MESSAGE);
       }
+
     });
   }
 
   public void createExitMenuButton() {
     this.addButtonSeparator();
-    this.fileMenu.add(this.menuItem = mkMenuItem(EXIT));
+    this.menuItem = mkMenuItem(EXIT);
+    this.fileMenu.add(this.menuItem);
   }
 
   public void exitMenuButtonListener() {
-    this.menuItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent actionEvent) {
-        presentation.exit(0);
-      }
-    });
+    this.menuItem.addActionListener(actionEvent -> presentation.exit(0));
   }
 
   public void createNextMenuButton() {
-    this.viewMenu.add(this.menuItem = mkMenuItem(NEXT));
+    this.menuItem = mkMenuItem(NEXT);
+    this.viewMenu.add(this.menuItem);
   }
 
   public void nextMenuButtonListener() {
-    this.menuItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent actionEvent) {
-        presentation.nextSlide();
-      }
-    });
+    this.menuItem.addActionListener(actionEvent -> presentation.nextSlide());
   }
 
   public void createPrevMenuButton() {
-    this.viewMenu.add(this.menuItem = mkMenuItem(PREV));
+    this.menuItem = mkMenuItem(PREV);
+    this.viewMenu.add(this.menuItem);
   }
 
   public void prevMenuButtonListener() {
-    this.menuItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent actionEvent) {
-        presentation.prevSlide();
-      }
-    });
+    this.menuItem.addActionListener(actionEvent -> presentation.prevSlide());
+
   }
 
   public void createGoToMenuButton() {
-    this.viewMenu.add(this.menuItem = mkMenuItem(GOTO));
+    this.menuItem = mkMenuItem(GOTO);
+    this.viewMenu.add(this.menuItem);
   }
 
   public void goToMenuButton() {
-    this.menuItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent actionEvent) {
-        String pageNumberStr = JOptionPane.showInputDialog((Object) PAGENR);
-        int pageNumber = Integer.parseInt(pageNumberStr);
-        presentation.setSlideNumber(pageNumber - 1);
-      }
+    this.menuItem.addActionListener(actionEvent -> {
+
+      String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
+      int pageNumber = Integer.parseInt(pageNumberStr);
+      presentation.setSlideNumber(pageNumber - 1);
+
     });
   }
 
   public void createAboutMenuButton() {
-    this.helpMenu.add(this.menuItem = mkMenuItem(ABOUT));
+    this.menuItem = mkMenuItem(ABOUT);
+    this.helpMenu.add(this.menuItem);
   }
 
   public void aboutMenuButton() {
-    this.menuItem.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent actionEvent) {
-        AboutBox.show(parent);
-      }
-    });
+    this.menuItem.addActionListener(actionEvent -> AboutBox.show(parent));
   }
 
   public void addButtonSeparator() {
