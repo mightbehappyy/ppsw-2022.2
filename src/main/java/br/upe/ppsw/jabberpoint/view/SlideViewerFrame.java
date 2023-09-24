@@ -6,7 +6,6 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
 import br.upe.ppsw.jabberpoint.control.KeyController;
-import br.upe.ppsw.jabberpoint.control.MenuController;
 import br.upe.ppsw.jabberpoint.model.Presentation;
 
 public class SlideViewerFrame extends JFrame {
@@ -15,8 +14,8 @@ public class SlideViewerFrame extends JFrame {
 
   private static final String JABTITLE = "Jabberpoint 1.6";
 
-  public final static int WIDTH = 1200;
-  public final static int HEIGHT = 800;
+  public static final int WIDTH = 1200;
+  public static final int HEIGHT = 800;
 
   public SlideViewerFrame(String title, Presentation presentation) {
     super(title);

@@ -24,7 +24,6 @@ public class MenuViewer extends MenuBar {
     protected static final String VIEW = "Visualizar";
 
     private MenuController menuController;
-    private MenuItem menuItem;
     private Menu fileMenu;
     private Menu viewMenu;
     private Menu helpMenu;
@@ -45,12 +44,11 @@ public class MenuViewer extends MenuBar {
         this.menuController = new MenuController(frame, pres, this);
 
         this.drawMenus();
-        this.drawButtons();
-        this.menuController.createEventListeners();
-    }
+        this.drawFileMenuButtons();
+        this.drawViewMenuButtons();
+        this.drawHelpButtons();
 
-    public MenuItem createMenuItem(String name) {
-        return new MenuItem(name, new MenuShortcut(name.charAt(0)));
+        this.menuController.createEventListeners();
     }
 
     public MenuItem getOpenFileButton() {
@@ -85,69 +83,75 @@ public class MenuViewer extends MenuBar {
         return aboutButton;
     }
 
-    public void drawMenus() {
-        this.add(this.fileMenu);
+    private void drawMenus() {
+        Menu.add(this.fileMenu);
         this.add(this.viewMenu);
         this.setHelpMenu(this.helpMenu);
     }
 
-    public void drawButtons() {
+    private void drawFileMenuButtons() {
         this.createOpenMenuButton();
         this.createNewMenuButton();
         this.createSaveMenuButton();
+        this.addButtonSeparator();
         this.createExitMenuButton();
+    }
+
+    private void drawViewMenuButtons() {
         this.createNextMenuButton();
         this.createPrevMenuButton();
         this.createGoToMenuButton();
+    }
+
+    private void drawHelpButtons() {
         this.createAboutMenuButton();
     }
 
-    public void createOpenMenuButton() {
+    private MenuItem createMenuItem(String name) {
+        return new MenuItem(name, new MenuShortcut(name.charAt(0)));
+    }
+
+    private void createOpenMenuButton() {
         this.openFileButton = createMenuItem(OPEN);
         this.fileMenu.add(this.openFileButton);
     }
 
-    public void createNewMenuButton() {
+    private void createNewMenuButton() {
         this.newFileButton = createMenuItem(NEW);
         this.fileMenu.add(this.newFileButton);
     }
 
-    public void createSaveMenuButton() {
+    private void createSaveMenuButton() {
         this.saveButton = createMenuItem(SAVE);
         this.fileMenu.add(this.saveButton);
     }
 
-    public void createExitMenuButton() {
-        this.addButtonSeparator();
+    private void createExitMenuButton() {
         this.exitProgramButton = createMenuItem(EXIT);
         this.fileMenu.add(this.exitProgramButton);
     }
 
-    public void createNextMenuButton() {
+    private void createNextMenuButton() {
         this.nextSlideButton = createMenuItem(NEXT);
         this.viewMenu.add(this.nextSlideButton);
     }
 
-    public void createPrevMenuButton() {
+    private void createPrevMenuButton() {
         this.previousSlideButton = createMenuItem(PREV);
         this.viewMenu.add(this.previousSlideButton);
     }
 
-    public void createGoToMenuButton() {
+    private void createGoToMenuButton() {
         this.goToSlideButton = createMenuItem(GOTO);
         this.viewMenu.add(this.goToSlideButton);
     }
 
-    public void createAboutMenuButton() {
+    private void createAboutMenuButton() {
         this.aboutButton = createMenuItem(ABOUT);
         this.helpMenu.add(this.aboutButton);
     }
 
-    public MenuItem getMenuItem() {
-        return this.menuItem;
-    }
-
-    public void addButtonSeparator() {
+    private void addButtonSeparator() {
         this.fileMenu.addSeparator();
     }
 

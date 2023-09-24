@@ -17,10 +17,9 @@ public class MenuController extends MenuBar {
 
   private Frame frame;
   private Presentation presentation;
+  private Accessor xmlAccessor;
 
   private MenuViewer menuViewer;
-
-  private Accessor xmlAccessor;
 
   protected static final String PAGENR = "Número do Slide?";
 
@@ -51,11 +50,10 @@ public class MenuController extends MenuBar {
     this.goToMenuButtonListener();
   }
 
-  public void openMenuButtonListener() {
+  private void openMenuButtonListener() {
     menuViewer.getOpenFileButton().addActionListener(actionEvent -> {
 
-      presentation.clear();
-
+      clearPresentation();
       try {
         xmlAccessor.loadFile(presentation, ResourceUtils.getFile(TESTFILE).getAbsolutePath());
         presentation.setSlideNumber(0);
@@ -63,19 +61,19 @@ public class MenuController extends MenuBar {
         JOptionPane.showMessageDialog(this.frame, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
       }
 
-      this.frame.repaint();
+      reloadFrame();
 
     });
   }
 
-  public void newMenuButtonListener() {
+  private void newMenuButtonListener() {
     menuViewer.getNewFileButton().addActionListener(actionEvent -> {
-      presentation.clear();
-      this.frame.repaint();
+      clearPresentation();
+      reloadFrame();
     });
   }
 
-  public void saveMenuButtonListener() {
+  private void saveMenuButtonListener() {
     menuViewer.getSaveButton().addActionListener(actionEvent -> {
       try {
         xmlAccessor.saveFile(presentation, SAVEFILE);
@@ -86,20 +84,20 @@ public class MenuController extends MenuBar {
     });
   }
 
-  public void exitMenuButtonListener() {
+  private void exitMenuButtonListener() {
     menuViewer.getExitProgramButton().addActionListener(actionEvent -> presentation.exit());
   }
 
-  public void nextMenuButtonListener() {
+  private void nextMenuButtonListener() {
     menuViewer.getNextSlideButton().addActionListener(actionEvent -> presentation.nextSlide());
   }
 
-  public void prevMenuButtonListener() {
+  private void prevMenuButtonListener() {
     menuViewer.getPreviousSlideButton().addActionListener(actionEvent -> presentation.prevSlide());
 
   }
 
-  public void goToMenuButtonListener() {
+  private void goToMenuButtonListener() {
     menuViewer.getGoToSlideButton().addActionListener(actionEvent -> {
       String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
       int pageNumber = Integer.parseInt(pageNumberStr);
@@ -108,8 +106,16 @@ public class MenuController extends MenuBar {
     });
   }
 
-  public void aboutMenuButtonListener() {
+  private void aboutMenuButtonListener() {
     menuViewer.getAboutButton().addActionListener(actionEvent -> AboutBox.show(frame));
+  }
+
+  private void clearPresentation() {
+    presentation.clear();
+  }
+
+  private void reloadFrame() {
+    this.frame.repaint();
   }
 
 }
