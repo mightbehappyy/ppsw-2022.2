@@ -84,7 +84,7 @@ public class MenuViewer extends MenuBar {
     }
 
     private void drawMenus() {
-        Menu.add(this.fileMenu);
+        this.add(this.fileMenu);
         this.add(this.viewMenu);
         this.setHelpMenu(this.helpMenu);
     }
