@@ -38,7 +38,6 @@ public class XMLAccessor extends Accessor {
   protected static final String UNKNOWNTYPE = "Unknown Element type";
   protected static final String NFE = "Number Format Exception";
 
-
   private String getTitle(Element element, String tagName) {
     NodeList titles = element.getElementsByTagName(tagName);
     return titles.item(0).getTextContent();
@@ -46,7 +45,10 @@ public class XMLAccessor extends Accessor {
   }
 
   public void loadFile(Presentation presentation, String filename) throws IOException {
-    int slideNumber, itemNumber, max = 0, maxItems = 0;
+    int slideNumber;
+    int itemNumber;
+    int max = 0;
+    int maxItems = 0;
 
     try {
       DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();

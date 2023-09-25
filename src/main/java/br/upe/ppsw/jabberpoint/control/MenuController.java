@@ -1,9 +1,10 @@
 package br.upe.ppsw.jabberpoint.control;
 
 import br.upe.ppsw.jabberpoint.model.Presentation;
-import br.upe.ppsw.jabberpoint.view.AboutBox;
+import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 import br.upe.ppsw.jabberpoint.view.MenuViewer;
 import br.upe.ppsw.jabberpoint.model.Accessor;
+import br.upe.ppsw.jabberpoint.model.MenuModel;
 
 import java.awt.Frame;
 import java.awt.MenuBar;
@@ -16,13 +17,11 @@ public class MenuController extends MenuBar {
   private static final long serialVersionUID = 227L;
 
   private Frame frame;
-  private Presentation presentation;
-  private Accessor xmlAccessor;
+  private transient Presentation presentation;
+  private transient Accessor xmlAccessor;
 
   private MenuViewer menuViewer;
-
-  protected static final String PAGENR = "Número do Slide?";
-
+  private MenuModel menuModel;
   protected static final String TESTFILE = "classpath:test.xml";
   protected static final String SAVEFILE = "classpath:dump.xml";
 
@@ -33,9 +32,10 @@ public class MenuController extends MenuBar {
   public MenuController(Frame frame, Presentation pres, MenuViewer menuViewer) {
     this.frame = frame;
     this.presentation = pres;
-    this.xmlAccessor = new XMLAccessor();
-
     this.menuViewer = menuViewer;
+
+    this.xmlAccessor = new XMLAccessor();
+    this.menuModel = new MenuModel();
 
   }
 
@@ -60,7 +60,6 @@ public class MenuController extends MenuBar {
       } catch (IOException exc) {
         JOptionPane.showMessageDialog(this.frame, IOEX + exc, LOADERR, JOptionPane.ERROR_MESSAGE);
       }
-
       reloadFrame();
 
     });
@@ -98,16 +97,16 @@ public class MenuController extends MenuBar {
   }
 
   private void goToMenuButtonListener() {
-    menuViewer.getGoToSlideButton().addActionListener(actionEvent -> {
-      String pageNumberStr = JOptionPane.showInputDialog(PAGENR);
-      int pageNumber = Integer.parseInt(pageNumberStr);
-      presentation.setSlideNumber(pageNumber - 1);
+    menuViewer.getGoToSlideButton()
+        .addActionListener(actionEvent -> presentation.setSlideNumber(getUserPageNumberInput() - 1));
+  }
 
-    });
+  private int getUserPageNumberInput() {
+    return menuModel.getUserSelectedSlideNumber();
   }
 
   private void aboutMenuButtonListener() {
-    menuViewer.getAboutButton().addActionListener(actionEvent -> AboutBox.show(frame));
+    menuViewer.getAboutButton().addActionListener(actionEvent -> DialogBoxes.showAboutBox(frame));
   }
 
   private void clearPresentation() {

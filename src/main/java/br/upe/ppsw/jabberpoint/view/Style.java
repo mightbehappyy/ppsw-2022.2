@@ -14,18 +14,6 @@ public class Style {
   private final int fontSize;
   private final int leading;
 
-  public int getIndent() {
-    return this.indent;
-  }
-
-  public Color getColor() {
-    return this.color;
-  }
-
-  public int getLeading() {
-    return this.leading;
-  }
-
   public Style(int indent, Color color, int points, int leading) {
     this.indent = indent;
     this.color = color;
@@ -51,11 +39,20 @@ public class Style {
     return styles[level];
   }
 
-  public String toString() {
-    return "[" + indent + "," + color + "; " + fontSize + " on " + leading + "]";
-  }
-
   public Font getFont(float scale) {
     return font.deriveFont(fontSize * scale);
   }
+
+  public int getIndent() {
+    return this.indent;
+  }
+
+  public Color getColor() {
+    return this.color;
+  }
+
+  public int getLeading() {
+    return this.leading;
+  }
+
 }

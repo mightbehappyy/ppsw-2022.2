@@ -5,6 +5,9 @@ import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.MenuShortcut;
+
+import javax.swing.JOptionPane;
+
 import br.upe.ppsw.jabberpoint.control.MenuController;
 import br.upe.ppsw.jabberpoint.model.Presentation;
 
@@ -41,14 +44,18 @@ public class MenuViewer extends MenuBar {
         this.fileMenu = new Menu(FILE);
         this.viewMenu = new Menu(VIEW);
         this.helpMenu = new Menu(HELP);
+
         this.menuController = new MenuController(frame, pres, this);
 
         this.drawMenus();
         this.drawFileMenuButtons();
         this.drawViewMenuButtons();
         this.drawHelpButtons();
-
         this.menuController.createEventListeners();
+    }
+
+    public static String showGoToPageDialogBox() {
+        return JOptionPane.showInputDialog(PAGENR);
     }
 
     public MenuItem getOpenFileButton() {
@@ -80,7 +87,7 @@ public class MenuViewer extends MenuBar {
     }
 
     public MenuItem getAboutButton() {
-        return aboutButton;
+        return this.aboutButton;
     }
 
     private void drawMenus() {

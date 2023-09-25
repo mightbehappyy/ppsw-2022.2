@@ -3,13 +3,13 @@ package br.upe.ppsw.jabberpoint.view;
 import java.awt.Frame;
 import javax.swing.JOptionPane;
 
-public class AboutBox {
+public class DialogBoxes {
 
-  private AboutBox() {
+  private DialogBoxes() {
 
   }
 
-  public static void show(Frame parent) {
+  public static void showAboutBox(Frame parent) {
     JOptionPane.showMessageDialog(parent,
         "JabberPoint é um programa de apresentação de slides básico escrito em Java(tm).\n"
             + "Ele é disponibilizado como uma cópia livre desde que você mantenha esta informação de splash screen intacta.\n"
@@ -17,5 +17,11 @@ public class AboutBox {
             + "Adaptada por Helaine Barreiros fpara Universidade de Pernambuco, 2021 -- now.\n"
             + "A cópia original do autor está disponível em http://www.darwinsys.com/",
         "Sobre JabberPoint", JOptionPane.INFORMATION_MESSAGE);
+  }
+
+  public static void showOutOfBoundsError(Frame parent) {
+    JOptionPane.showMessageDialog(parent,
+        "Out of bounds error",
+        "Ocorreu um erro", JOptionPane.INFORMATION_MESSAGE);
   }
 }

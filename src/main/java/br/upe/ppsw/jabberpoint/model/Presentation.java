@@ -2,7 +2,9 @@ package br.upe.ppsw.jabberpoint.model;
 
 import java.util.ArrayList;
 
+import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 import br.upe.ppsw.jabberpoint.view.SlideViewerComponent;
+import java.awt.Frame;
 
 public class Presentation {
 
@@ -10,6 +12,7 @@ public class Presentation {
   private ArrayList<Slide> showList = null;
   private SlideViewerComponent slideViewComponent = null;
   private int currentSlideNumber = 0;
+  private Frame frame;
 
   public Presentation() {
     slideViewComponent = null;
@@ -42,9 +45,13 @@ public class Presentation {
   }
 
   public void setSlideNumber(int number) {
-    currentSlideNumber = number;
-    if (slideViewComponent != null) {
-      slideViewComponent.update(this, getCurrentSlide());
+    if (number < getSize()) {
+      currentSlideNumber = number;
+      if (slideViewComponent != null) {
+        slideViewComponent.update(this, getCurrentSlide());
+      }
+    } else {
+      DialogBoxes.showOutOfBoundsError(frame);
     }
   }
 
