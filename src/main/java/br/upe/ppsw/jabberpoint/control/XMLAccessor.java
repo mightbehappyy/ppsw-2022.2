@@ -16,7 +16,6 @@ import org.xml.sax.SAXException;
 
 import br.upe.ppsw.jabberpoint.model.Accessor;
 import br.upe.ppsw.jabberpoint.model.BitmapItem;
-import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
@@ -38,13 +37,27 @@ public class XMLAccessor extends Accessor {
   protected static final String UNKNOWNTYPE = "Unknown Element type";
   protected static final String NFE = "Number Format Exception";
 
+  private static XMLAccessor instance = null;
+
+  private XMLAccessor() {
+    super();
+  }
+
+  public static void setInstance() {
+    new XMLAccessor();
+  }
+
+  public static XMLAccessor getInstance() {
+    return instance;
+  }
+
   private String getTitle(Element element, String tagName) {
     NodeList titles = element.getElementsByTagName(tagName);
     return titles.item(0).getTextContent();
 
   }
 
-  public void loadFile(Presentation presentation, String filename) throws IOException {
+  public void loadFile(SlideController presentation, String filename) throws IOException {
     int slideNumber;
     int itemNumber;
     int max = 0;
@@ -114,7 +127,7 @@ public class XMLAccessor extends Accessor {
     }
   }
 
-  public void saveFile(Presentation presentation, String filename) throws IOException {
+  public void saveFile(SlideController presentation, String filename) throws IOException {
     PrintWriter out = new PrintWriter(new FileWriter(filename));
 
     out.println("<?xml version=\"1.0\"?>");

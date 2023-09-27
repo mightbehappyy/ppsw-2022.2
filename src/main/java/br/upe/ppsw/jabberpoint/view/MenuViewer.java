@@ -1,15 +1,18 @@
 package br.upe.ppsw.jabberpoint.view;
 
-import java.awt.Frame;
 import java.awt.Menu;
 import java.awt.MenuBar;
-import java.awt.MenuItem;
-import java.awt.MenuShortcut;
 
 import javax.swing.JOptionPane;
 
-import br.upe.ppsw.jabberpoint.control.MenuController;
-import br.upe.ppsw.jabberpoint.model.Presentation;
+import br.upe.ppsw.jabberpoint.control.MenuAboutButton;
+import br.upe.ppsw.jabberpoint.control.MenuExitButton;
+import br.upe.ppsw.jabberpoint.control.MenuGoToButton;
+import br.upe.ppsw.jabberpoint.control.MenuNewFileButton;
+import br.upe.ppsw.jabberpoint.control.MenuNextButton;
+import br.upe.ppsw.jabberpoint.control.MenuOpenFileButton;
+import br.upe.ppsw.jabberpoint.control.MenuPreviousButton;
+import br.upe.ppsw.jabberpoint.control.MenuSaveFileButton;
 
 public class MenuViewer extends MenuBar {
 
@@ -26,136 +29,30 @@ public class MenuViewer extends MenuBar {
     protected static final String SAVE = "Salvar";
     protected static final String VIEW = "Visualizar";
 
-    private MenuController menuController;
     private Menu fileMenu;
     private Menu viewMenu;
     private Menu helpMenu;
 
-    private MenuItem openFileButton;
-    private MenuItem newFileButton;
-    private MenuItem saveButton;
-    private MenuItem exitProgramButton;
-    private MenuItem nextSlideButton;
-    private MenuItem previousSlideButton;
-    private MenuItem goToSlideButton;
-    private MenuItem aboutButton;
-
-    public MenuViewer(Frame frame, Presentation pres) {
+    public MenuViewer() {
         this.fileMenu = new Menu(FILE);
         this.viewMenu = new Menu(VIEW);
         this.helpMenu = new Menu(HELP);
 
-        this.menuController = new MenuController(frame, pres, this);
+        fileMenu.add(new MenuNewFileButton("Novo"));
+        fileMenu.add(new MenuOpenFileButton("Abrir"));
+        fileMenu.add(new MenuSaveFileButton("Salvar"));
+        addButtonSeparator();
+        fileMenu.add(new MenuExitButton("Sair"));
 
-        this.drawMenus();
-        this.drawFileMenuButtons();
-        this.drawViewMenuButtons();
-        this.drawHelpButtons();
-        this.menuController.createEventListeners();
-    }
+        viewMenu.add(new MenuNextButton("Próximo"));
+        viewMenu.add(new MenuPreviousButton("Anterior"));
+        viewMenu.add(new MenuGoToButton("Ir para"));
 
-    public static String showGoToPageDialogBox() {
-        return JOptionPane.showInputDialog(PAGENR);
-    }
+        helpMenu.add(new MenuAboutButton("Sobre"));
 
-    public MenuItem getOpenFileButton() {
-        return this.openFileButton;
-    }
-
-    public MenuItem getNewFileButton() {
-        return this.newFileButton;
-    }
-
-    public MenuItem getSaveButton() {
-        return this.saveButton;
-    }
-
-    public MenuItem getExitProgramButton() {
-        return this.exitProgramButton;
-    }
-
-    public MenuItem getNextSlideButton() {
-        return this.nextSlideButton;
-    }
-
-    public MenuItem getPreviousSlideButton() {
-        return this.previousSlideButton;
-    }
-
-    public MenuItem getGoToSlideButton() {
-        return this.goToSlideButton;
-    }
-
-    public MenuItem getAboutButton() {
-        return this.aboutButton;
-    }
-
-    private void drawMenus() {
-        this.add(this.fileMenu);
-        this.add(this.viewMenu);
-        this.setHelpMenu(this.helpMenu);
-    }
-
-    private void drawFileMenuButtons() {
-        this.createOpenMenuButton();
-        this.createNewMenuButton();
-        this.createSaveMenuButton();
-        this.addButtonSeparator();
-        this.createExitMenuButton();
-    }
-
-    private void drawViewMenuButtons() {
-        this.createNextMenuButton();
-        this.createPrevMenuButton();
-        this.createGoToMenuButton();
-    }
-
-    private void drawHelpButtons() {
-        this.createAboutMenuButton();
-    }
-
-    private MenuItem createMenuItem(String name) {
-        return new MenuItem(name, new MenuShortcut(name.charAt(0)));
-    }
-
-    private void createOpenMenuButton() {
-        this.openFileButton = createMenuItem(OPEN);
-        this.fileMenu.add(this.openFileButton);
-    }
-
-    private void createNewMenuButton() {
-        this.newFileButton = createMenuItem(NEW);
-        this.fileMenu.add(this.newFileButton);
-    }
-
-    private void createSaveMenuButton() {
-        this.saveButton = createMenuItem(SAVE);
-        this.fileMenu.add(this.saveButton);
-    }
-
-    private void createExitMenuButton() {
-        this.exitProgramButton = createMenuItem(EXIT);
-        this.fileMenu.add(this.exitProgramButton);
-    }
-
-    private void createNextMenuButton() {
-        this.nextSlideButton = createMenuItem(NEXT);
-        this.viewMenu.add(this.nextSlideButton);
-    }
-
-    private void createPrevMenuButton() {
-        this.previousSlideButton = createMenuItem(PREV);
-        this.viewMenu.add(this.previousSlideButton);
-    }
-
-    private void createGoToMenuButton() {
-        this.goToSlideButton = createMenuItem(GOTO);
-        this.viewMenu.add(this.goToSlideButton);
-    }
-
-    private void createAboutMenuButton() {
-        this.aboutButton = createMenuItem(ABOUT);
-        this.helpMenu.add(this.aboutButton);
+        add(fileMenu);
+        add(viewMenu);
+        setHelpMenu(helpMenu);
     }
 
     private void addButtonSeparator() {

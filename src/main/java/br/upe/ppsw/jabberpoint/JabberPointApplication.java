@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import br.upe.ppsw.jabberpoint.model.Accessor;
-import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.view.SlideViewerFrame;
 import br.upe.ppsw.jabberpoint.view.Style;
+import br.upe.ppsw.jabberpoint.control.SlideController;
 import br.upe.ppsw.jabberpoint.control.XMLAccessor;
 
 @SpringBootApplication
@@ -18,7 +18,6 @@ public class JabberPointApplication implements CommandLineRunner {
 
   protected static final String IOERR = "IO Error: ";
   protected static final String JABERR = "Jabberpoint Error ";
-  protected static final String JABVERSION = "Jabberpoint 1.6 -";
 
   public static void main(String[] argv) {
     SpringApplicationBuilder builder = new SpringApplicationBuilder(JabberPointApplication.class);
@@ -31,18 +30,18 @@ public class JabberPointApplication implements CommandLineRunner {
   public void run(String... args) throws Exception {
     Style.createStyles();
 
-    Presentation presentation = new Presentation();
+    SlideController presentation = SlideController.getInstance();
 
-    new SlideViewerFrame(JABVERSION, presentation);
+    SlideViewerFrame.setInstance("Jabberpoint", presentation);
 
     try {
       if (args.length <= 1) {
         Accessor.getDemoAccessor().loadFile(presentation, "");
       } else {
-        new XMLAccessor().loadFile(presentation, args[1]);
+        XMLAccessor.getInstance().loadFile(presentation, args[1]);
       }
 
-      presentation.setSlideNumber(0);
+      SlideController.getInstance().setSlideNumber(0);
 
     } catch (IOException ex) {
       JOptionPane.showMessageDialog(null, IOERR + ex, JABERR, JOptionPane.ERROR_MESSAGE);

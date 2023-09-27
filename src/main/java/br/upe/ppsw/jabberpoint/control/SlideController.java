@@ -1,12 +1,13 @@
-package br.upe.ppsw.jabberpoint.model;
+package br.upe.ppsw.jabberpoint.control;
 
 import java.util.ArrayList;
 
+import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 import br.upe.ppsw.jabberpoint.view.SlideViewerComponent;
 import java.awt.Frame;
 
-public class Presentation {
+public class SlideController {
 
   private String title;
   private ArrayList<Slide> showList = null;
@@ -14,12 +15,21 @@ public class Presentation {
   private int currentSlideNumber = 0;
   private Frame frame;
 
-  public Presentation() {
+  private static SlideController instance = null;
+
+  private SlideController() {
     slideViewComponent = null;
     clear();
   }
 
-  public Presentation(SlideViewerComponent slideViewerComponent) {
+  public static SlideController getInstance() {
+    if (instance == null) {
+      instance = new SlideController();
+    }
+    return instance;
+  }
+
+  public SlideController(SlideViewerComponent slideViewerComponent) {
     this.slideViewComponent = slideViewerComponent;
     clear();
   }
@@ -32,8 +42,8 @@ public class Presentation {
     return title;
   }
 
-  public void setTitle(String nt) {
-    title = nt;
+  public void setTitle(String newTitle) {
+    title = newTitle;
   }
 
   public void setShowView(SlideViewerComponent slideViewerComponent) {
@@ -51,7 +61,7 @@ public class Presentation {
         slideViewComponent.update(this, getCurrentSlide());
       }
     } else {
-      DialogBoxes.showOutOfBoundsError(frame);
+      DialogBoxes.showOutOfBoundsError();
     }
   }
 

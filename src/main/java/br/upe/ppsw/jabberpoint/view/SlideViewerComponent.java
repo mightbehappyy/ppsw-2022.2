@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import br.upe.ppsw.jabberpoint.model.Presentation;
+import br.upe.ppsw.jabberpoint.control.SlideController;
 import br.upe.ppsw.jabberpoint.model.Slide;
 
 public class SlideViewerComponent extends JComponent {
@@ -24,10 +24,10 @@ public class SlideViewerComponent extends JComponent {
 
   private Slide slide;
   private Font labelFont = null;
-  private Presentation presentation = null;
+  private SlideController presentation = null;
   private JFrame frame = null;
 
-  public SlideViewerComponent(Presentation pres, JFrame frame) {
+  public SlideViewerComponent(SlideController pres, JFrame frame) {
     setBackground(BGCOLOR);
     presentation = pres;
     labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
@@ -38,7 +38,7 @@ public class SlideViewerComponent extends JComponent {
     return new Dimension(Slide.WIDTH, Slide.HEIGHT);
   }
 
-  public void update(Presentation presentation, Slide data) {
+  public void update(SlideController presentation, Slide data) {
     if (data == null) {
       repaint();
       return;

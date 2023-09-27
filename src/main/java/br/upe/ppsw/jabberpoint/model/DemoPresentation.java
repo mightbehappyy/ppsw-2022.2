@@ -3,9 +3,11 @@ package br.upe.ppsw.jabberpoint.model;
 import java.io.FileNotFoundException;
 import org.springframework.util.ResourceUtils;
 
+import br.upe.ppsw.jabberpoint.control.SlideController;
+
 public class DemoPresentation extends Accessor {
 
-  public void loadFile(Presentation presentation, String unusedFilename)
+  public void loadFile(SlideController presentation, String unusedFilename)
       throws FileNotFoundException {
 
     presentation.setTitle("Apresentação de Demonstração");
@@ -48,7 +50,7 @@ public class DemoPresentation extends Accessor {
     presentation.append(slide);
   }
 
-  public void saveFile(Presentation presentation, String unusedFilename) {
+  public void saveFile(SlideController presentation, String unusedFilename) {
     throw new IllegalStateException("Não é possível salvar arquivo na versão demo!");
   }
 

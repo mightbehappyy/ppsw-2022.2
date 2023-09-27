@@ -1,6 +1,5 @@
 package br.upe.ppsw.jabberpoint.view;
 
-import java.awt.Frame;
 import javax.swing.JOptionPane;
 
 public class DialogBoxes {
@@ -9,8 +8,8 @@ public class DialogBoxes {
 
   }
 
-  public static void showAboutBox(Frame parent) {
-    JOptionPane.showMessageDialog(parent,
+  public static void showAboutBox() {
+    JOptionPane.showMessageDialog(SlideViewerFrame.getInstance(),
         "JabberPoint é um programa de apresentação de slides básico escrito em Java(tm).\n"
             + "Ele é disponibilizado como uma cópia livre desde que você mantenha esta informação de splash screen intacta.\n"
             + "Copyright (c) 1995-now by Ian F. Darwin, ian@darwinsys.com.\n"
@@ -19,9 +18,13 @@ public class DialogBoxes {
         "Sobre JabberPoint", JOptionPane.INFORMATION_MESSAGE);
   }
 
-  public static void showOutOfBoundsError(Frame parent) {
-    JOptionPane.showMessageDialog(parent,
+  public static void showOutOfBoundsError() {
+    JOptionPane.showMessageDialog(SlideViewerFrame.getInstance(),
         "Out of bounds error",
         "Ocorreu um erro", JOptionPane.INFORMATION_MESSAGE);
+  }
+
+  public static String showGoToPageDialogBox() {
+    return JOptionPane.showInputDialog("Número do Slide?");
   }
 }
