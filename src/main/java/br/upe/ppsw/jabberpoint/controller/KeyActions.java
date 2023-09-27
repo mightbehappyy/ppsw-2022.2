@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.control;
+package br.upe.ppsw.jabberpoint.controller;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

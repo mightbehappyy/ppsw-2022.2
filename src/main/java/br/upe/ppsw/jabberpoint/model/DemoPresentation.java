@@ -3,7 +3,7 @@ package br.upe.ppsw.jabberpoint.model;
 import java.io.FileNotFoundException;
 import org.springframework.util.ResourceUtils;
 
-import br.upe.ppsw.jabberpoint.control.SlideController;
+import br.upe.ppsw.jabberpoint.controller.SlideController;
 
 public class DemoPresentation extends Accessor {
 

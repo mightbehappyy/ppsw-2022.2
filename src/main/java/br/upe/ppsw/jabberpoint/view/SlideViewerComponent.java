@@ -8,7 +8,7 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import br.upe.ppsw.jabberpoint.control.SlideController;
+import br.upe.ppsw.jabberpoint.controller.SlideController;
 import br.upe.ppsw.jabberpoint.model.Slide;
 
 public class SlideViewerComponent extends JComponent {

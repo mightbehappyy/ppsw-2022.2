@@ -5,14 +5,14 @@ import java.awt.MenuBar;
 
 import javax.swing.JOptionPane;
 
-import br.upe.ppsw.jabberpoint.control.MenuAboutButton;
-import br.upe.ppsw.jabberpoint.control.MenuExitButton;
-import br.upe.ppsw.jabberpoint.control.MenuGoToButton;
-import br.upe.ppsw.jabberpoint.control.MenuNewFileButton;
-import br.upe.ppsw.jabberpoint.control.MenuNextButton;
-import br.upe.ppsw.jabberpoint.control.MenuOpenFileButton;
-import br.upe.ppsw.jabberpoint.control.MenuPreviousButton;
-import br.upe.ppsw.jabberpoint.control.MenuSaveFileButton;
+import br.upe.ppsw.jabberpoint.controller.MenuAboutButton;
+import br.upe.ppsw.jabberpoint.controller.MenuExitButton;
+import br.upe.ppsw.jabberpoint.controller.MenuGoToButton;
+import br.upe.ppsw.jabberpoint.controller.MenuNewFileButton;
+import br.upe.ppsw.jabberpoint.controller.MenuNextButton;
+import br.upe.ppsw.jabberpoint.controller.MenuOpenFileButton;
+import br.upe.ppsw.jabberpoint.controller.MenuPreviousButton;
+import br.upe.ppsw.jabberpoint.controller.MenuSaveFileButton;
 
 public class MenuViewer extends MenuBar {
 

@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.control;
+package br.upe.ppsw.jabberpoint.controller;
 
 import java.awt.MenuItem;
 import java.awt.MenuShortcut;

@@ -5,9 +5,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
-import br.upe.ppsw.jabberpoint.control.KeyController;
-import br.upe.ppsw.jabberpoint.control.SlideController;
-import br.upe.ppsw.jabberpoint.model.Slide;
+import br.upe.ppsw.jabberpoint.controller.KeyController;
+import br.upe.ppsw.jabberpoint.controller.SlideController;
 
 public class SlideViewerFrame extends JFrame {
 
