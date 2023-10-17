@@ -9,11 +9,11 @@ import br.upe.ppsw.jabberpoint.view.ContentPanel;
 public class SlideController {
 
   private String title;
-  private ArrayList<Slide> showList = null;
-  private ContentPanel contentPanel = null;
+  private ArrayList<Slide> showList;
+  private ContentPanel contentPanel;
   private int currentSlideNumber = 0;
 
-  private static SlideController instance = null;
+  private static SlideController instance;
 
   public SlideController(ContentPanel slideViewerComponent) {
     this.contentPanel = slideViewerComponent;

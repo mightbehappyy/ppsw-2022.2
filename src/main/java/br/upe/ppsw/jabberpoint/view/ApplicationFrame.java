@@ -39,6 +39,14 @@ public class ApplicationFrame extends JFrame {
     setVisible(true);
   }
 
+  public int getFrameWidth() {
+    return DEFAULT_FRAME_WIDTH;
+  }
+
+  public int getFrameHeight() {
+    return DEFAULT_FRAME_HEIGHT;
+  }
+
   public static ApplicationFrame setInstance(String title, SlideController slideController) {
     if (instance == null) {
       instance = new ApplicationFrame(title, slideController);

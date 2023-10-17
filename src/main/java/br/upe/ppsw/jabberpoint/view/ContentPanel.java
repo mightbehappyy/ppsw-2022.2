@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import br.upe.ppsw.jabberpoint.controller.SlideController;
 import br.upe.ppsw.jabberpoint.model.Slide;
+import br.upe.ppsw.jabberpoint.view.drawers.SlideDrawer;
 
 public class ContentPanel extends JPanel {
   private static final long serialVersionUID = 227L;
@@ -22,6 +23,7 @@ public class ContentPanel extends JPanel {
   private static final int YPOS = 20;
 
   private Slide slide;
+  private SlideDrawer slideDrawer;
   private Font labelFont = null;
   private SlideController presentation = null;
   private JFrame frame = null;
@@ -72,7 +74,8 @@ public class ContentPanel extends JPanel {
 
     Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
-    slide.draw(g, area, this);
+    slideDrawer = new SlideDrawer(slide);
+    slideDrawer.draw(g, area, this);
   }
 
 }
