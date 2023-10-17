@@ -4,21 +4,24 @@ import java.util.ArrayList;
 
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
-import br.upe.ppsw.jabberpoint.view.SlideViewerComponent;
-import java.awt.Frame;
+import br.upe.ppsw.jabberpoint.view.ContentPanel;
 
 public class SlideController {
 
   private String title;
   private ArrayList<Slide> showList = null;
-  private SlideViewerComponent slideViewComponent = null;
+  private ContentPanel contentPanel = null;
   private int currentSlideNumber = 0;
-  private Frame frame;
 
   private static SlideController instance = null;
 
+  public SlideController(ContentPanel slideViewerComponent) {
+    this.contentPanel = slideViewerComponent;
+    clear();
+  }
+
   private SlideController() {
-    slideViewComponent = null;
+    contentPanel = null;
     clear();
   }
 
@@ -27,11 +30,6 @@ public class SlideController {
       instance = new SlideController();
     }
     return instance;
-  }
-
-  public SlideController(SlideViewerComponent slideViewerComponent) {
-    this.slideViewComponent = slideViewerComponent;
-    clear();
   }
 
   public int getSize() {
@@ -46,8 +44,8 @@ public class SlideController {
     title = newTitle;
   }
 
-  public void setShowView(SlideViewerComponent slideViewerComponent) {
-    this.slideViewComponent = slideViewerComponent;
+  public void setShowView(ContentPanel contentPanel) {
+    this.contentPanel = contentPanel;
   }
 
   public int getSlideNumber() {
@@ -57,8 +55,8 @@ public class SlideController {
   public void setSlideNumber(int number) {
     if (number < getSize()) {
       currentSlideNumber = number;
-      if (slideViewComponent != null) {
-        slideViewComponent.update(this, getCurrentSlide());
+      if (contentPanel != null) {
+        contentPanel.update(this, getCurrentSlide());
       }
     } else {
       DialogBoxes.showOutOfBoundsError();
@@ -78,7 +76,7 @@ public class SlideController {
   }
 
   public void clear() {
-    showList = new ArrayList<Slide>();
+    showList = new ArrayList<>();
     setSlideNumber(-1);
   }
 
@@ -90,7 +88,7 @@ public class SlideController {
     if (number < 0 || number >= getSize()) {
       return null;
     }
-    return (Slide) showList.get(number);
+    return showList.get(number);
   }
 
   public Slide getCurrentSlide() {

@@ -12,16 +12,16 @@ import org.slf4j.LoggerFactory;
 
 import br.upe.ppsw.jabberpoint.view.Style;
 
-public class BitmapItem extends SlideItem {
+public class ImageItem extends SlideItem {
 
   private BufferedImage bufferedImage;
   private String imageName;
-  private static final Logger logger = LoggerFactory.getLogger(BitmapItem.class);
+  private static final Logger logger = LoggerFactory.getLogger(ImageItem.class);
 
   protected static final String FILE = "Arquivo ";
   protected static final String NOTFOUND = " não encontrado";
 
-  public BitmapItem(int level, String name) {
+  public ImageItem(int level, String name) {
     super(level);
 
     imageName = name;
@@ -34,7 +34,7 @@ public class BitmapItem extends SlideItem {
 
   }
 
-  public BitmapItem() {
+  public ImageItem() {
     this(0, null);
   }
 
@@ -57,7 +57,7 @@ public class BitmapItem extends SlideItem {
   }
 
   public String toString() {
-    return "BitmapItem[" + getLevel() + "," + imageName + "]";
+    return "ImageItem[" + getLevel() + "," + imageName + "]";
   }
 
 }

@@ -9,7 +9,7 @@ public class DialogBoxes {
   }
 
   public static void showAboutBox() {
-    JOptionPane.showMessageDialog(SlideViewerFrame.getInstance(),
+    JOptionPane.showMessageDialog(ApplicationFrame.getInstance(),
         "JabberPoint é um programa de apresentação de slides básico escrito em Java(tm).\n"
             + "Ele é disponibilizado como uma cópia livre desde que você mantenha esta informação de splash screen intacta.\n"
             + "Copyright (c) 1995-now by Ian F. Darwin, ian@darwinsys.com.\n"
@@ -19,7 +19,7 @@ public class DialogBoxes {
   }
 
   public static void showOutOfBoundsError() {
-    JOptionPane.showMessageDialog(SlideViewerFrame.getInstance(),
+    JOptionPane.showMessageDialog(ApplicationFrame.getInstance(),
         "Out of bounds error",
         "Ocorreu um erro", JOptionPane.INFORMATION_MESSAGE);
   }

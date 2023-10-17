@@ -13,7 +13,7 @@ public class MenuPreviousButton extends BaseMenuController {
 
     @Override
     protected void menuAction(ActionEvent event) {
-        this.addActionListener(actionEvent -> SlideController.getInstance().prevSlide());
+        SlideController.getInstance().prevSlide();
     }
 
 }

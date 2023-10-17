@@ -5,15 +5,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import br.upe.ppsw.jabberpoint.controller.SlideController;
 import br.upe.ppsw.jabberpoint.model.Slide;
 
-public class SlideViewerComponent extends JComponent {
+public class ContentPanel extends JPanel {
   private static final long serialVersionUID = 227L;
-
   private static final Color BGCOLOR = Color.white;
   private static final Color COLOR = Color.black;
   private static final String FONTNAME = "Dialog";
@@ -27,13 +26,14 @@ public class SlideViewerComponent extends JComponent {
   private SlideController presentation = null;
   private JFrame frame = null;
 
-  public SlideViewerComponent(SlideController pres, JFrame frame) {
+  public ContentPanel(SlideController pres, JFrame frame) {
     setBackground(BGCOLOR);
     presentation = pres;
     labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
     this.frame = frame;
   }
 
+  @Override
   public Dimension getPreferredSize() {
     return new Dimension(Slide.WIDTH, Slide.HEIGHT);
   }
@@ -50,7 +50,14 @@ public class SlideViewerComponent extends JComponent {
     frame.setTitle(presentation.getTitle());
   }
 
+  public void updateSlide() {
+    ApplicationFrame.getInstance().setTitle(presentation.getTitle());
+    repaint();
+  }
+
+  @Override
   public void paintComponent(Graphics g) {
+    super.paintComponent(g);
     g.setColor(BGCOLOR);
     g.fillRect(0, 0, getSize().width, getSize().height);
 

@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
-import br.upe.ppsw.jabberpoint.view.MenuViewer;
 
 public class MenuGoToButton extends BaseMenuController {
 

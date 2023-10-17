@@ -4,9 +4,10 @@ import java.io.FileNotFoundException;
 import org.springframework.util.ResourceUtils;
 
 import br.upe.ppsw.jabberpoint.controller.SlideController;
+import br.upe.ppsw.jabberpoint.model.interfaces.ILoadFile;
+import br.upe.ppsw.jabberpoint.model.interfaces.ISaveFile;
 
-public class DemoPresentation extends Accessor {
-
+public class DemoPresentation implements ILoadFile, ISaveFile {
   public void loadFile(SlideController presentation, String unusedFilename)
       throws FileNotFoundException {
 
@@ -46,7 +47,7 @@ public class DemoPresentation extends Accessor {
     slide.append(1, " ");
     slide.append(1, "Fim da Apresentação");
     slide.append(
-        new BitmapItem(1, ResourceUtils.getFile("classpath:JabberPoint.jpg").getAbsolutePath()));
+        new ImageItem(1, ResourceUtils.getFile("classpath:JabberPoint.jpg").getAbsolutePath()));
     presentation.append(slide);
   }
 

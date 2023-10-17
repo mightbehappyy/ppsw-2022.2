@@ -3,7 +3,7 @@ package br.upe.ppsw.jabberpoint.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-import br.upe.ppsw.jabberpoint.view.SlideViewerFrame;
+import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
 import java.awt.MenuShortcut;
 
@@ -24,7 +24,7 @@ public class MenuNewFileButton extends BaseMenuController {
     }
 
     private void reloadFrame() {
-        SlideViewerFrame.getInstance().repaint();
+        ApplicationFrame.getInstance().repaint();
     }
 
 }

@@ -14,13 +14,14 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import br.upe.ppsw.jabberpoint.model.Accessor;
-import br.upe.ppsw.jabberpoint.model.BitmapItem;
+import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
+import br.upe.ppsw.jabberpoint.model.interfaces.ILoadFile;
+import br.upe.ppsw.jabberpoint.model.interfaces.ISaveFile;
 
-public class XMLAccessor extends Accessor {
+public class XMLAccessor implements ILoadFile, ISaveFile {
 
   protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -48,6 +49,8 @@ public class XMLAccessor extends Accessor {
   }
 
   public static XMLAccessor getInstance() {
+    if (instance == null)
+      setInstance();
     return instance;
   }
 
@@ -120,7 +123,7 @@ public class XMLAccessor extends Accessor {
       slide.append(new TextItem(level, item.getTextContent()));
     } else {
       if (IMAGE.equals(type)) {
-        slide.append(new BitmapItem(level, item.getTextContent()));
+        slide.append(new ImageItem(level, item.getTextContent()));
       } else {
         System.err.println(UNKNOWNTYPE);
       }
@@ -153,9 +156,9 @@ public class XMLAccessor extends Accessor {
           out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
           out.print(((TextItem) slideItem).getText());
         } else {
-          if (slideItem instanceof BitmapItem) {
+          if (slideItem instanceof ImageItem) {
             out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-            out.print(((BitmapItem) slideItem).getName());
+            out.print(((ImageItem) slideItem).getName());
           } else {
             System.out.println("Ignoring " + slideItem);
           }

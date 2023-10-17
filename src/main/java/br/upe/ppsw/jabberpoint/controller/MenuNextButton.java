@@ -12,7 +12,7 @@ public class MenuNextButton extends BaseMenuController {
 
     @Override
     protected void menuAction(ActionEvent event) {
-        this.addActionListener(actionEvent -> SlideController.getInstance().nextSlide());
+        SlideController.getInstance().nextSlide();
     }
 
 }

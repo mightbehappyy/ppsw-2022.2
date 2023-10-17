@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
 
 import org.springframework.util.ResourceUtils;
 
-import br.upe.ppsw.jabberpoint.view.SlideViewerFrame;
+import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
 public class MenuOpenFileButton extends BaseMenuController {
     protected static final String TESTFILE = "classpath:test.xml";
 
     private static XMLAccessor xmlAccessorInstance = XMLAccessor.getInstance();
     private static SlideController slideControllerInstance = SlideController.getInstance();
-    private static SlideViewerFrame slideViewerFrameInstance = SlideViewerFrame.getInstance();
+    private static ApplicationFrame slideViewerFrameInstance = ApplicationFrame.getInstance();
 
     public MenuOpenFileButton(String buttonPlaceholder) {
         super(buttonPlaceholder, new MenuShortcut(KeyEvent.VK_O, true));
