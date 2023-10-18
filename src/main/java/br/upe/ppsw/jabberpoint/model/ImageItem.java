@@ -42,6 +42,10 @@ public class ImageItem extends SlideItem {
     return imageName;
   }
 
+  public BufferedImage getBufferedImage() {
+    return bufferedImage;
+  }
+
   public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
     return new Rectangle((int) (myStyle.getIndent() * scale), 0,
         (int) (bufferedImage.getWidth(observer) * scale),

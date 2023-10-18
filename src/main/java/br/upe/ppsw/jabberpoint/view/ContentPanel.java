@@ -24,9 +24,9 @@ public class ContentPanel extends JPanel {
 
   private Slide slide;
   private SlideDrawer slideDrawer;
-  private Font labelFont = null;
-  private SlideController presentation = null;
-  private JFrame frame = null;
+  private Font labelFont;
+  private SlideController presentation;
+  private JFrame frame;
 
   public ContentPanel(SlideController pres, JFrame frame) {
     setBackground(BGCOLOR);

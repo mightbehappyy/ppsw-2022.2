@@ -16,6 +16,7 @@ public class SlideDrawer {
 
     public SlideDrawer(Slide slide) {
         this.slide = slide;
+
     }
 
     public void draw(Graphics g, Rectangle area, ImageObserver view) {
@@ -23,19 +24,23 @@ public class SlideDrawer {
 
         int y = area.y;
 
-        SlideItem slideItem = slide.getTextItem();
-        Style style = Style.getStyle(slideItem.getLevel());
-        slideItem.draw(area.x, y, scale, g, style, view);
+        SlideItem slideItem = slide.getTextItemTitle();
 
-        y += slideItem.getBoundingBox(g, view, scale, style).height;
+        IItemDrawer baseItemDrawer = ItemFactory.createDrawer(slideItem);
+
+        Style style = Style.getStyle(slideItem.getLevel());
+        baseItemDrawer.draw(y, y, scale, g, style, view);
+
+        y += baseItemDrawer.getBoundingBox(g, view, scale, style).height;
 
         for (int number = 0; number < slide.getSize(); number++) {
             slideItem = slide.getSlideItems().get(number);
+            baseItemDrawer = ItemFactory.createDrawer(slideItem);
 
             style = Style.getStyle(slideItem.getLevel());
-            slideItem.draw(area.x, y, scale, g, style, view);
+            baseItemDrawer.draw(area.x, y, scale, g, style, view);
 
-            y += slideItem.getBoundingBox(g, view, scale, style).height;
+            y += baseItemDrawer.getBoundingBox(g, view, scale, style).height;
         }
     }
 
