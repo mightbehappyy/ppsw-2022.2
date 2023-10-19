@@ -8,7 +8,7 @@ import br.upe.ppsw.jabberpoint.view.Style;
 
 public interface IItemDrawer {
 
-    public abstract Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle);
+    public abstract Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle);
 
-    public abstract void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o);
+    public abstract void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver o);
 }

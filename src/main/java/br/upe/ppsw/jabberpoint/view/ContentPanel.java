@@ -1,11 +1,9 @@
 package br.upe.ppsw.jabberpoint.view;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import br.upe.ppsw.jabberpoint.controller.SlideController;
@@ -25,57 +23,47 @@ public class ContentPanel extends JPanel {
   private Slide slide;
   private SlideDrawer slideDrawer;
   private Font labelFont;
-  private SlideController presentation;
-  private JFrame frame;
+  private SlideController slideController;
 
-  public ContentPanel(SlideController pres, JFrame frame) {
+  public ContentPanel() {
     setBackground(BGCOLOR);
-    presentation = pres;
+    this.slideController = SlideController.getInstance();
+    slideController.setShowView(this);
     labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
-    this.frame = frame;
+
   }
 
-  @Override
-  public Dimension getPreferredSize() {
-    return new Dimension(Slide.WIDTH, Slide.HEIGHT);
-  }
-
-  public void update(SlideController presentation, Slide data) {
-    if (data == null) {
+  public void update(Slide slide) {
+    this.slide = slide;
+    if (slide == null) {
       repaint();
-      return;
     }
-
-    this.presentation = presentation;
-    this.slide = data;
     repaint();
-    frame.setTitle(presentation.getTitle());
   }
 
   public void updateSlide() {
-    ApplicationFrame.getInstance().setTitle(presentation.getTitle());
     repaint();
   }
 
   @Override
-  public void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    g.setColor(BGCOLOR);
-    g.fillRect(0, 0, getSize().width, getSize().height);
+  public void paintComponent(Graphics graphics) {
+    super.paintComponent(graphics);
+    graphics.setColor(BGCOLOR);
+    graphics.fillRect(0, 0, getSize().width, getSize().height);
 
-    if (presentation.getSlideNumber() < 0 || slide == null) {
+    if (slideController.getCurrentSlideNumber() < 0 || slide == null) {
       return;
     }
 
-    g.setFont(labelFont);
-    g.setColor(COLOR);
-    g.drawString("Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize(),
+    graphics.setFont(labelFont);
+    graphics.setColor(COLOR);
+    graphics.drawString("Slide " + (1 + slideController.getCurrentSlideNumber()) + " of " + slideController.getSize(),
         XPOS, YPOS);
 
     Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
 
     slideDrawer = new SlideDrawer(slide);
-    slideDrawer.draw(g, area, this);
+    slideDrawer.draw(graphics, area, this);
   }
 
 }

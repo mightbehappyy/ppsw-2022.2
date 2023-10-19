@@ -22,8 +22,8 @@ public class TextItemDrawer implements IItemDrawer {
     }
 
     @Override
-    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-        List<TextLayout> layouts = textItem.getLayouts(g, myStyle, scale);
+    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
+        List<TextLayout> layouts = textItem.getLayouts(graphics, myStyle, scale);
 
         int xsize = 0;
         int ysize = (int) (myStyle.getLeading() * scale);
@@ -48,21 +48,21 @@ public class TextItemDrawer implements IItemDrawer {
     }
 
     @Override
-    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver o) {
+    public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
         if (textItem.getText() == null || textItem.getText().length() == 0) {
             return;
         }
 
-        List<TextLayout> layouts = textItem.getLayouts(g, myStyle, scale);
+        List<TextLayout> layouts = textItem.getLayouts(graphics, myStyle, scale);
         Point pen = new Point(x + (int) (myStyle.getIndent() * scale), y + (int) (myStyle.getLeading() * scale));
 
-        Graphics2D g2d = (Graphics2D) g;
+        Graphics2D g2d = (Graphics2D) graphics;
         g2d.setColor(myStyle.getColor());
 
-        Iterator<TextLayout> it = layouts.iterator();
+        Iterator<TextLayout> iterator = layouts.iterator();
 
-        while (it.hasNext()) {
-            TextLayout layout = it.next();
+        while (iterator.hasNext()) {
+            TextLayout layout = iterator.next();
 
             pen.y += layout.getAscent();
             layout.draw(g2d, pen.x, pen.y);

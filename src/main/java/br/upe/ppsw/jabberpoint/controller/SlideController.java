@@ -8,21 +8,15 @@ import br.upe.ppsw.jabberpoint.view.ContentPanel;
 
 public class SlideController {
 
-  private String title;
   private ArrayList<Slide> showList;
   private ContentPanel contentPanel;
-  private int currentSlideNumber = 0;
+  private int currentSlideNumber;
 
-  private static SlideController instance;
-
-  public SlideController(ContentPanel slideViewerComponent) {
-    this.contentPanel = slideViewerComponent;
-    clear();
-  }
+  private static SlideController instance = null;
 
   private SlideController() {
-    contentPanel = null;
     clear();
+    currentSlideNumber = 0;
   }
 
   public static SlideController getInstance() {
@@ -36,27 +30,11 @@ public class SlideController {
     return showList.size();
   }
 
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String newTitle) {
-    title = newTitle;
-  }
-
-  public void setShowView(ContentPanel contentPanel) {
-    this.contentPanel = contentPanel;
-  }
-
-  public int getSlideNumber() {
-    return currentSlideNumber;
-  }
-
   public void setSlideNumber(int number) {
     if (number < getSize()) {
       currentSlideNumber = number;
       if (contentPanel != null) {
-        contentPanel.update(this, getCurrentSlide());
+        contentPanel.update(getCurrentSlide());
       }
     } else {
       DialogBoxes.showOutOfBoundsError();
@@ -75,6 +53,18 @@ public class SlideController {
     }
   }
 
+  public void setShowView(ContentPanel contentPanel) {
+    this.contentPanel = contentPanel;
+  }
+
+  public Slide getCurrentSlide() {
+    return getSlide(currentSlideNumber);
+  }
+
+  public int getCurrentSlideNumber() {
+    return currentSlideNumber;
+  }
+
   public void clear() {
     showList = new ArrayList<>();
     setSlideNumber(-1);
@@ -91,11 +81,4 @@ public class SlideController {
     return showList.get(number);
   }
 
-  public Slide getCurrentSlide() {
-    return getSlide(currentSlideNumber);
-  }
-
-  public void exit() {
-    System.exit(0);
-  }
 }

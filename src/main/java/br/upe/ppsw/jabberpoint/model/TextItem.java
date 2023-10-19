@@ -31,12 +31,12 @@ public class TextItem extends SlideItem {
     return text == null ? "" : text;
   }
 
-  public AttributedString getAttributedString(Style style, float scale) {
-    AttributedString attrStr = new AttributedString(getText());
+  private AttributedString getAttributedString(Style style, float scale) {
+    AttributedString attributedString = new AttributedString(getText());
 
-    attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
+    attributedString.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
 
-    return attrStr;
+    return attributedString;
   }
 
   public List<TextLayout> getLayouts(Graphics g, Style s, float scale) {

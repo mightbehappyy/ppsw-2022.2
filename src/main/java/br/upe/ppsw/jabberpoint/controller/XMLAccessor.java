@@ -74,7 +74,6 @@ public class XMLAccessor implements ILoadFile, ISaveFile {
       Document document = builder.parse(new File(filename));
 
       Element doc = document.getDocumentElement();
-      presentation.setTitle(getTitle(doc, SHOWTITLE));
 
       NodeList slides = doc.getElementsByTagName(SLIDE);
       max = slides.getLength();
@@ -140,7 +139,6 @@ public class XMLAccessor implements ILoadFile, ISaveFile {
     out.println("<presentation>");
 
     out.print("<showtitle>");
-    out.print(presentation.getTitle());
     out.println("</showtitle>");
 
     for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
@@ -160,7 +158,7 @@ public class XMLAccessor implements ILoadFile, ISaveFile {
         } else {
           if (slideItem instanceof ImageItem) {
             out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-            out.print(((ImageItem) slideItem).getName());
+            out.print(((ImageItem) slideItem).getImagePath());
           } else {
             System.out.println("Ignoring " + slideItem);
           }

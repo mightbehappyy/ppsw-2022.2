@@ -16,7 +16,7 @@ public class ImageItemDrawer implements IItemDrawer {
     }
 
     @Override
-    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
+    public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
         return new Rectangle((int) (myStyle.getIndent() * scale), 0,
                 (int) (imageItem.getBufferedImage().getWidth(observer) * scale),
                 ((int) (myStyle.getLeading() * scale))
@@ -24,11 +24,11 @@ public class ImageItemDrawer implements IItemDrawer {
     }
 
     @Override
-    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
+    public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver observer) {
         int width = x + (int) (myStyle.getIndent() * scale);
         int height = y + (int) (myStyle.getLeading() * scale);
 
-        g.drawImage(imageItem.getBufferedImage(), width, height,
+        graphics.drawImage(imageItem.getBufferedImage(), width, height,
                 (int) (imageItem.getBufferedImage().getWidth(observer) * scale),
                 (int) (imageItem.getBufferedImage().getHeight(observer) * scale), observer);
     }

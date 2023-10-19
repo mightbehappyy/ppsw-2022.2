@@ -12,7 +12,7 @@ public class MenuAboutButton extends BaseMenuController {
 
     @Override
     protected void menuAction(ActionEvent event) {
-        this.addActionListener(actionEvent -> DialogBoxes.showAboutBox());
+        DialogBoxes.showAboutBox();
     }
 
 }

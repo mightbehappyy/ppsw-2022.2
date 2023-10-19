@@ -11,8 +11,6 @@ public class DemoPresentation implements ILoadFile, ISaveFile {
   public void loadFile(SlideController presentation, String unusedFilename)
       throws FileNotFoundException {
 
-    presentation.setTitle("Apresentação de Demonstração");
-
     Slide slide;
     slide = new Slide();
 

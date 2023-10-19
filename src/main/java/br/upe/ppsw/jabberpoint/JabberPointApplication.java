@@ -32,7 +32,7 @@ public class JabberPointApplication implements CommandLineRunner {
 
     SlideController presentation = SlideController.getInstance();
 
-    ApplicationFrame.setInstance("Jabberpoint", presentation);
+    ApplicationFrame.setInstance("Jabberpoint");
 
     DemoPresentation demo = new DemoPresentation();
     try {

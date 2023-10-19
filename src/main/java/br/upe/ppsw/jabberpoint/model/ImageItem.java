@@ -1,67 +1,49 @@
 package br.upe.ppsw.jabberpoint.model;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import org.springframework.util.ResourceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import br.upe.ppsw.jabberpoint.view.Style;
-
 public class ImageItem extends SlideItem {
 
   private BufferedImage bufferedImage;
-  private String imageName;
+  private String imageFilePath;
   private static final Logger logger = LoggerFactory.getLogger(ImageItem.class);
 
   protected static final String FILE = "Arquivo ";
   protected static final String NOTFOUND = " não encontrado";
 
-  public ImageItem(int level, String name) {
+  public ImageItem(int level, String filePath) {
     super(level);
-
-    imageName = name;
-
-    try {
-      bufferedImage = ImageIO.read(ResourceUtils.getFile(imageName).getAbsoluteFile());
-    } catch (IOException e) {
-      logger.error("{} {} {}", FILE, imageName, NOTFOUND);
-    }
-
+    imageFilePath = filePath;
+    readImage();
   }
 
   public ImageItem() {
     this(0, null);
   }
 
-  public String getName() {
-    return imageName;
+  public void readImage() {
+    try {
+      bufferedImage = ImageIO.read(ResourceUtils.getFile(imageFilePath).getAbsoluteFile());
+    } catch (IOException e) {
+      logger.error("{} {} {}", FILE, imageFilePath, NOTFOUND);
+    }
+  }
+
+  public String getImagePath() {
+    return imageFilePath;
   }
 
   public BufferedImage getBufferedImage() {
     return bufferedImage;
   }
 
-  public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-    return new Rectangle((int) (myStyle.getIndent() * scale), 0,
-        (int) (bufferedImage.getWidth(observer) * scale),
-        ((int) (myStyle.getLeading() * scale)) + (int) (bufferedImage.getHeight(observer) * scale));
-  }
-
-  public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-    int width = x + (int) (myStyle.getIndent() * scale);
-    int height = y + (int) (myStyle.getLeading() * scale);
-
-    g.drawImage(bufferedImage, width, height, (int) (bufferedImage.getWidth(observer) * scale),
-        (int) (bufferedImage.getHeight(observer) * scale), observer);
-  }
-
   public String toString() {
-    return "ImageItem[" + getLevel() + "," + imageName + "]";
+    return "ImageItem[" + getLevel() + "," + imageFilePath + "]";
   }
 
 }
