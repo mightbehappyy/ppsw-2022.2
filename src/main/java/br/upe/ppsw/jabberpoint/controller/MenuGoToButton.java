@@ -13,10 +13,10 @@ public class MenuGoToButton extends BaseMenuController {
     }
 
     @Override
-    protected void menuAction(ActionEvent event) {
+    protected void setMenuAction(ActionEvent event) {
         String pageNumberString = DialogBoxes.showGoToPageDialogBox();
         int pageNumber = Integer.parseInt(pageNumberString);
-        SlideController.getInstance().setSlideNumber(pageNumber - 1);
+        PresentationController.getInstance().setSlideNumber(pageNumber - 1);
     }
 
 }

@@ -10,21 +10,16 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 import br.upe.ppsw.jabberpoint.view.Style;
 
 public class TextItem extends SlideItem {
 
   private String text;
 
-  private static final String EMPTYTEXT = "No Text Given";
-
   public TextItem(int level, String string) {
     super(level);
     text = string;
-  }
-
-  public TextItem() {
-    this(0, EMPTYTEXT);
   }
 
   public String getText() {
@@ -48,7 +43,7 @@ public class TextItem extends SlideItem {
     FontRenderContext frc = g2d.getFontRenderContext();
     LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-    float wrappingWidth = (Slide.WIDTH - s.getIndent()) * scale;
+    float wrappingWidth = (ApplicationFrame.WIDTH - s.getIndent()) * scale;
 
     while (measurer.getPosition() < getText().length()) {
       TextLayout layout = measurer.nextLayout(wrappingWidth);

@@ -14,13 +14,13 @@ public class MenuNewFileButton extends BaseMenuController {
     }
 
     @Override
-    protected void menuAction(ActionEvent event) {
+    protected void setMenuAction(ActionEvent event) {
         clearPresentation();
         reloadFrame();
     }
 
     private void clearPresentation() {
-        SlideController.getInstance().clear();
+        PresentationController.getInstance().clear();
     }
 
     private void reloadFrame() {

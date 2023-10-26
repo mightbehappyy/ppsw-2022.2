@@ -3,12 +3,12 @@ package br.upe.ppsw.jabberpoint.model;
 import java.io.FileNotFoundException;
 import org.springframework.util.ResourceUtils;
 
-import br.upe.ppsw.jabberpoint.controller.SlideController;
-import br.upe.ppsw.jabberpoint.model.interfaces.ILoadFile;
-import br.upe.ppsw.jabberpoint.model.interfaces.ISaveFile;
+import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.interfaces.ILoadable;
+import br.upe.ppsw.jabberpoint.model.interfaces.ISavable;
 
-public class DemoPresentation implements ILoadFile, ISaveFile {
-  public void loadFile(SlideController presentation, String unusedFilename)
+public class DemoPresentation implements ILoadable, ISavable {
+  public void loadFile(PresentationController presentation, String unusedFilename)
       throws FileNotFoundException {
 
     Slide slide;
@@ -49,7 +49,7 @@ public class DemoPresentation implements ILoadFile, ISaveFile {
     presentation.append(slide);
   }
 
-  public void saveFile(SlideController presentation, String unusedFilename) {
+  public void saveFile(PresentationController presentation, String unusedFilename) {
     throw new IllegalStateException("Não é possível salvar arquivo na versão demo!");
   }
 

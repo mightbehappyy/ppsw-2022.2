@@ -6,64 +6,57 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import javax.swing.JPanel;
 
-import br.upe.ppsw.jabberpoint.controller.SlideController;
+import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.view.drawers.SlideDrawer;
+import br.upe.ppsw.jabberpoint.view.drawers.SlideCountDrawer;
 
 public class ContentPanel extends JPanel {
   private static final long serialVersionUID = 227L;
-  private static final Color BGCOLOR = Color.white;
+  private static final Color BACKGROUND_COLOR = Color.white;
   private static final Color COLOR = Color.black;
   private static final String FONTNAME = "Dialog";
   private static final int FONTSTYLE = Font.BOLD;
   private static final int FONTHEIGHT = 10;
   private static final int XPOS = 1100;
-  private static final int YPOS = 20;
+  private static final int YPOS = 10;
 
-  private Slide slide;
-  private SlideDrawer slideDrawer;
   private Font labelFont;
-  private SlideController slideController;
+  private PresentationController presentationController;
+  private Slide slide;
+  private SlideCountDrawer slidePageCounter;
+  private SlideDrawer slideDrawer;
 
   public ContentPanel() {
-    setBackground(BGCOLOR);
-    this.slideController = SlideController.getInstance();
-    slideController.setShowView(this);
-    labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
+    this.slidePageCounter = new SlideCountDrawer(XPOS, YPOS);
+    this.labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
+    this.slideDrawer = new SlideDrawer();
+    presentationController = PresentationController.getInstance();
+    presentationController.setShowView(this);
 
   }
 
   public void update(Slide slide) {
     this.slide = slide;
-    if (slide == null) {
-      repaint();
-    }
-    repaint();
-  }
-
-  public void updateSlide() {
     repaint();
   }
 
   @Override
   public void paintComponent(Graphics graphics) {
     super.paintComponent(graphics);
-    graphics.setColor(BGCOLOR);
-    graphics.fillRect(0, 0, getSize().width, getSize().height);
 
-    if (slideController.getCurrentSlideNumber() < 0 || slide == null) {
-      return;
-    }
+    setBackground(BACKGROUND_COLOR);
 
     graphics.setFont(labelFont);
     graphics.setColor(COLOR);
-    graphics.drawString("Slide " + (1 + slideController.getCurrentSlideNumber()) + " of " + slideController.getSize(),
-        XPOS, YPOS);
+    slidePageCounter.draw(graphics);
 
-    Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
+    if (presentationController.getCurrentSlideNumber() < 0 || slide == null) {
+      return;
+    }
 
-    slideDrawer = new SlideDrawer(slide);
-    slideDrawer.draw(graphics, area, this);
+    slideDrawer.draw(graphics, new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS)), slide, this);
+
   }
 
 }

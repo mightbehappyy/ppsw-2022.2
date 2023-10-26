@@ -11,7 +11,7 @@ public class KeyController extends KeyAdapter {
 
     @Override
     public void keyPressed(KeyEvent keyEvent) {
-        KeyActions keyMap = new KeyActions(SlideController.getInstance());
+        KeyActions keyMap = new KeyActions(PresentationController.getInstance());
         keyMap.excecuteAction(keyEvent.getKeyCode());
     }
 

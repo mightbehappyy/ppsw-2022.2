@@ -1,5 +1,7 @@
 package br.upe.ppsw.jabberpoint.view;
 
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 public class DialogBoxes {
@@ -27,4 +29,10 @@ public class DialogBoxes {
   public static String showGoToPageDialogBox() {
     return JOptionPane.showInputDialog("Número do Slide?");
   }
+
+  public static void dialogErrorMessage(IOException exc) {
+    JOptionPane.showMessageDialog(ApplicationFrame.getInstance(), "IO Exception: " + exc, "Erro ao carregar",
+        JOptionPane.ERROR_MESSAGE);
+  }
+
 }

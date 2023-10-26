@@ -22,10 +22,6 @@ public class ImageItem extends SlideItem {
     readImage();
   }
 
-  public ImageItem() {
-    this(0, null);
-  }
-
   public void readImage() {
     try {
       bufferedImage = ImageIO.read(ResourceUtils.getFile(imageFilePath).getAbsoluteFile());

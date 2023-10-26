@@ -15,7 +15,7 @@ public class MenuOpenFileButton extends BaseMenuController {
     protected static final String TESTFILE = "classpath:test.xml";
 
     private static XMLAccessor xmlAccessorInstance = XMLAccessor.getInstance();
-    private static SlideController slideControllerInstance = SlideController.getInstance();
+    private static PresentationController presentationControllerInstance = PresentationController.getInstance();
     private static ApplicationFrame slideViewerFrameInstance = ApplicationFrame.getInstance();
 
     public MenuOpenFileButton(String buttonPlaceholder) {
@@ -23,17 +23,18 @@ public class MenuOpenFileButton extends BaseMenuController {
     }
 
     @Override
-    protected void menuAction(ActionEvent event) {
-        SlideController.getInstance().clear();
+    protected void setMenuAction(ActionEvent event) {
+
+        PresentationController.getInstance().clear();
         try {
-            xmlAccessorInstance.loadFile(SlideController.getInstance(),
+
+            xmlAccessorInstance.loadFile(PresentationController.getInstance(),
                     ResourceUtils.getFile(TESTFILE).getAbsolutePath());
-            slideControllerInstance.setSlideNumber(0);
+            presentationControllerInstance.setSlideNumber(0);
         } catch (IOException exc) {
             JOptionPane.showMessageDialog(slideViewerFrameInstance, "IO Exception: " + exc, "Erro ao carregar",
                     JOptionPane.ERROR_MESSAGE);
         }
-        slideViewerFrameInstance.repaint();
     }
 
 }

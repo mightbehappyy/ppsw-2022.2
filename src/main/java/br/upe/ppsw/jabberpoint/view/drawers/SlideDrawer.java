@@ -4,41 +4,42 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
+import javax.swing.JPanel;
+
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 import br.upe.ppsw.jabberpoint.view.Style;
+import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
 
 public class SlideDrawer {
-    private Slide slide;
 
-    public SlideDrawer(Slide slide) {
-        this.slide = slide;
+    public SlideDrawer() {
 
     }
 
-    public void draw(Graphics graphics, Rectangle area, ImageObserver view) {
+    public void draw(Graphics graphics, Rectangle area, Slide slide, JPanel contentPanel) {
         float scale = getScale(area);
 
         int y = area.y;
 
         SlideItem slideItem = slide.getTextItemTitle();
 
-        IItemDrawer baseItemDrawer = ItemFactory.createDrawer(slideItem);
+        IDrawableItem baseItemDrawer = ItemFactory.createDrawer(slideItem);
 
         Style style = Style.getStyle(slideItem.getLevel());
-        baseItemDrawer.draw(y, y, scale, graphics, style, view);
+        baseItemDrawer.draw(y, y, scale, graphics, style, contentPanel);
 
-        y += baseItemDrawer.getBoundingBox(graphics, view, scale, style).height;
+        y += baseItemDrawer.getBoundingBox(graphics, contentPanel, scale, style).height;
 
         for (int number = 0; number < slide.getSize(); number++) {
             slideItem = slide.getSlideItems().get(number);
             baseItemDrawer = ItemFactory.createDrawer(slideItem);
 
             style = Style.getStyle(slideItem.getLevel());
-            baseItemDrawer.draw(area.x, y, scale, graphics, style, view);
+            baseItemDrawer.draw(area.x, y, scale, graphics, style, contentPanel);
 
-            y += baseItemDrawer.getBoundingBox(graphics, view, scale, style).height;
+            y += baseItemDrawer.getBoundingBox(graphics, contentPanel, scale, style).height;
         }
     }
 

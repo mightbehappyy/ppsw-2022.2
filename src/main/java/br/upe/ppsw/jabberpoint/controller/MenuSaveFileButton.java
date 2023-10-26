@@ -13,7 +13,7 @@ public class MenuSaveFileButton extends BaseMenuController {
     protected static final String TESTFILE = "classpath:test.xml";
 
     private static XMLAccessor xmlAccessorInstance = XMLAccessor.getInstance();
-    private static SlideController slideControllerInstance = SlideController.getInstance();
+    private static PresentationController presentationControllerInstance = PresentationController.getInstance();
     private static ApplicationFrame slideViewerFrameInstance = ApplicationFrame.getInstance();
     private static final String SAVEFILE = "classpath:dump.xml";
 
@@ -22,9 +22,9 @@ public class MenuSaveFileButton extends BaseMenuController {
     }
 
     @Override
-    protected void menuAction(ActionEvent event) {
+    protected void setMenuAction(ActionEvent event) {
         try {
-            xmlAccessorInstance.saveFile(slideControllerInstance, SAVEFILE);
+            xmlAccessorInstance.saveFile(presentationControllerInstance, SAVEFILE);
         } catch (IOException exc) {
             JOptionPane.showMessageDialog(slideViewerFrameInstance, "IO Exception: " + exc, "Erro ao salvar",
                     JOptionPane.ERROR_MESSAGE);

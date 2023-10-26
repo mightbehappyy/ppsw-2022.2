@@ -1,6 +1,6 @@
 package br.upe.ppsw.jabberpoint.model.interfaces;
 
-public interface ISlideItem {
+public interface ILevelableItem {
 
     public int getLevel();
 }

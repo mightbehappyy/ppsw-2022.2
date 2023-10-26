@@ -1,29 +1,49 @@
 package br.upe.ppsw.jabberpoint.controller;
 
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import br.upe.ppsw.jabberpoint.model.DemoPresentation;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 import br.upe.ppsw.jabberpoint.view.ContentPanel;
 
-public class SlideController {
+public class PresentationController implements Serializable {
 
+  private static final long serialVersionUID = 1905122041950251207L;
   private ArrayList<Slide> showList;
   private ContentPanel contentPanel;
   private int currentSlideNumber;
 
-  private static SlideController instance = null;
+  private static PresentationController instance = null;
 
-  private SlideController() {
+  private PresentationController() {
     clear();
     currentSlideNumber = 0;
   }
 
-  public static SlideController getInstance() {
+  public static PresentationController getInstance() {
     if (instance == null) {
-      instance = new SlideController();
+      instance = new PresentationController();
     }
     return instance;
+  }
+
+  public void loadDemoPresentation(String... args) {
+    DemoPresentation demo = new DemoPresentation();
+    try {
+      if (args.length <= 1) {
+        demo.loadFile(this, null);
+      } else {
+        XMLAccessor.getInstance().loadFile(this, args[1]);
+      }
+
+      PresentationController.getInstance().setSlideNumber(0);
+
+    } catch (IOException ex) {
+      DialogBoxes.dialogErrorMessage(ex);
+    }
   }
 
   public int getSize() {
@@ -57,6 +77,13 @@ public class SlideController {
     this.contentPanel = contentPanel;
   }
 
+  public Slide getSlide(int number) {
+    if (number < 0 || number >= getSize()) {
+      return null;
+    }
+    return showList.get(number);
+  }
+
   public Slide getCurrentSlide() {
     return getSlide(currentSlideNumber);
   }
@@ -72,13 +99,6 @@ public class SlideController {
 
   public void append(Slide slide) {
     showList.add(slide);
-  }
-
-  public Slide getSlide(int number) {
-    if (number < 0 || number >= getSize()) {
-      return null;
-    }
-    return showList.get(number);
   }
 
 }

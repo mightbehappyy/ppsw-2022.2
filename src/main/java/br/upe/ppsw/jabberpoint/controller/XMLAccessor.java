@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -20,10 +18,10 @@ import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
-import br.upe.ppsw.jabberpoint.model.interfaces.ILoadFile;
-import br.upe.ppsw.jabberpoint.model.interfaces.ISaveFile;
+import br.upe.ppsw.jabberpoint.model.interfaces.ILoadable;
+import br.upe.ppsw.jabberpoint.model.interfaces.ISavable;
 
-public class XMLAccessor implements ILoadFile, ISaveFile {
+public class XMLAccessor implements ILoadable, ISavable {
 
   protected static final String DEFAULT_API_TO_USE = "dom";
 
@@ -46,13 +44,11 @@ public class XMLAccessor implements ILoadFile, ISaveFile {
     super();
   }
 
-  public static void setInstance() {
-    new XMLAccessor();
-  }
-
   public static XMLAccessor getInstance() {
-    if (instance == null)
-      setInstance();
+    if (instance == null) {
+      instance = new XMLAccessor();
+    }
+
     return instance;
   }
 
@@ -62,7 +58,7 @@ public class XMLAccessor implements ILoadFile, ISaveFile {
 
   }
 
-  public void loadFile(SlideController presentation, String filename) throws IOException {
+  public void loadFile(PresentationController presentation, String filename) throws IOException {
     int slideNumber;
     int itemNumber;
     int max = 0;
@@ -131,7 +127,7 @@ public class XMLAccessor implements ILoadFile, ISaveFile {
     }
   }
 
-  public void saveFile(SlideController presentation, String filename) throws IOException {
+  public void saveFile(PresentationController presentation, String filename) throws IOException {
     PrintWriter out = new PrintWriter(new FileWriter(filename));
 
     out.println("<?xml version=\"1.0\"?>");

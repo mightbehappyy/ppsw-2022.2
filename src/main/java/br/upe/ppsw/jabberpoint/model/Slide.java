@@ -1,13 +1,12 @@
 package br.upe.ppsw.jabberpoint.model;
 
 import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Slide {
+public class Slide implements Serializable {
 
-  public static final int WIDTH = 1200;
-  public static final int HEIGHT = 800;
-
+  private static final long serialVersionUID = 21917347L;
   private TextItem title;
   private ArrayList<SlideItem> items;
 

@@ -17,16 +17,7 @@ public class ApplicationFrame extends JFrame {
 
   private ApplicationFrame(String title) {
     super(title);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-    add(new ContentPanel());
-    addKeyListener(new KeyController());
-    setMenuBar(new MenuViewer());
-    setSize(new Dimension(WIDTH, HEIGHT));
-
-    setLocationRelativeTo(null);
-    setVisible(true);
-
+    setupWindowFrame();
   }
 
   public static ApplicationFrame setInstance(String title) {
@@ -39,6 +30,19 @@ public class ApplicationFrame extends JFrame {
 
   public static ApplicationFrame getInstance() {
     return instance;
+  }
+
+  private void setupWindowFrame() {
+    setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+    add(new ContentPanel());
+    addKeyListener(new KeyController());
+    setMenuBar(new MenuViewer());
+    setSize(new Dimension(WIDTH, HEIGHT));
+
+    setLocationRelativeTo(null);
+    setVisible(true);
+
   }
 
 }

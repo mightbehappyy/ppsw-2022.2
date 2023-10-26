@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
 
 abstract class BaseMenuController extends MenuItem {
 
-    protected abstract void menuAction(ActionEvent event);
+    protected abstract void setMenuAction(ActionEvent event);
 
     protected BaseMenuController(String buttonPlaceholder, MenuShortcut shortcut) {
         super(buttonPlaceholder, shortcut);
-        this.addActionListener(this::menuAction);
+        this.addActionListener(this::setMenuAction);
     }
 
     protected BaseMenuController(String buttonPlaceholder) {
         super(buttonPlaceholder);
-        this.addActionListener(this::menuAction);
+        this.addActionListener(this::setMenuAction);
     }
 }

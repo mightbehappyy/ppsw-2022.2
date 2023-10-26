@@ -11,7 +11,7 @@ public class MenuAboutButton extends BaseMenuController {
     }
 
     @Override
-    protected void menuAction(ActionEvent event) {
+    protected void setMenuAction(ActionEvent event) {
         DialogBoxes.showAboutBox();
     }
 

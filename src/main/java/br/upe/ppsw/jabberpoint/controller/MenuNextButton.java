@@ -11,8 +11,8 @@ public class MenuNextButton extends BaseMenuController {
     }
 
     @Override
-    protected void menuAction(ActionEvent event) {
-        SlideController.getInstance().nextSlide();
+    protected void setMenuAction(ActionEvent event) {
+        PresentationController.getInstance().nextSlide();
     }
 
 }

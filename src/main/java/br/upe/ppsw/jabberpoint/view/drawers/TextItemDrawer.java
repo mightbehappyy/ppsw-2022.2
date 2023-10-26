@@ -12,8 +12,9 @@ import java.util.List;
 
 import br.upe.ppsw.jabberpoint.model.TextItem;
 import br.upe.ppsw.jabberpoint.view.Style;
+import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
 
-public class TextItemDrawer implements IItemDrawer {
+public class TextItemDrawer implements IDrawableItem {
 
     private TextItem textItem;
 

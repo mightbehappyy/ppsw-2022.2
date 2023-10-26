@@ -12,8 +12,8 @@ public class MenuPreviousButton extends BaseMenuController {
     }
 
     @Override
-    protected void menuAction(ActionEvent event) {
-        SlideController.getInstance().prevSlide();
+    protected void setMenuAction(ActionEvent event) {
+        PresentationController.getInstance().prevSlide();
     }
 
 }

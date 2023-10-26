@@ -1,17 +1,13 @@
 package br.upe.ppsw.jabberpoint.model;
 
-import br.upe.ppsw.jabberpoint.model.interfaces.ISlideItem;
+import br.upe.ppsw.jabberpoint.model.interfaces.ILevelableItem;
 
-public abstract class SlideItem implements ISlideItem {
+public abstract class SlideItem implements ILevelableItem {
 
   private int level = 0;
 
   protected SlideItem(int lev) {
     level = lev;
-  }
-
-  protected SlideItem() {
-    this(0);
   }
 
   public int getLevel() {

@@ -7,11 +7,11 @@ import java.util.Map;
 
 public class KeyActions extends KeyAdapter {
 
-  private SlideController slideController;
+  private PresentationController presentationController;
   private Map<Integer, Runnable> keyMapping;
 
-  public KeyActions(SlideController slideController) {
-    this.slideController = slideController;
+  public KeyActions(PresentationController presentationController) {
+    this.presentationController = presentationController;
     initializekeyMapping();
 
   }
@@ -19,14 +19,14 @@ public class KeyActions extends KeyAdapter {
   private void initializekeyMapping() {
     keyMapping = new HashMap<>();
 
-    keyMapping.put(KeyEvent.VK_PAGE_DOWN, () -> slideController.prevSlide());
-    keyMapping.put(KeyEvent.VK_DOWN, () -> slideController.prevSlide());
-    keyMapping.put(KeyEvent.VK_MINUS, () -> slideController.prevSlide());
-    keyMapping.put(KeyEvent.VK_BACK_SPACE, () -> slideController.prevSlide());
-    keyMapping.put(KeyEvent.VK_PAGE_UP, () -> slideController.nextSlide());
-    keyMapping.put(KeyEvent.VK_UP, () -> slideController.nextSlide());
-    keyMapping.put(KeyEvent.VK_ENTER, () -> slideController.nextSlide());
-    keyMapping.put(KeyEvent.VK_PLUS, () -> slideController.nextSlide());
+    keyMapping.put(KeyEvent.VK_PAGE_DOWN, () -> presentationController.prevSlide());
+    keyMapping.put(KeyEvent.VK_DOWN, () -> presentationController.prevSlide());
+    keyMapping.put(KeyEvent.VK_MINUS, () -> presentationController.prevSlide());
+    keyMapping.put(KeyEvent.VK_BACK_SPACE, () -> presentationController.prevSlide());
+    keyMapping.put(KeyEvent.VK_PAGE_UP, () -> presentationController.nextSlide());
+    keyMapping.put(KeyEvent.VK_UP, () -> presentationController.nextSlide());
+    keyMapping.put(KeyEvent.VK_ENTER, () -> presentationController.nextSlide());
+    keyMapping.put(KeyEvent.VK_PLUS, () -> presentationController.nextSlide());
     keyMapping.put(KeyEvent.VK_Q, () -> System.exit(0));
   }
 

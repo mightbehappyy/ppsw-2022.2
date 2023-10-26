@@ -11,7 +11,7 @@ public class MenuExitButton extends BaseMenuController {
     }
 
     @Override
-    protected void menuAction(ActionEvent event) {
+    protected void setMenuAction(ActionEvent event) {
         System.exit(0);
     }
 
