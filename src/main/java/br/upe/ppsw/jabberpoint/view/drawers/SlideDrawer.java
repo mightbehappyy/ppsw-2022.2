@@ -2,7 +2,6 @@ package br.upe.ppsw.jabberpoint.view.drawers;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.ImageObserver;
 
 import javax.swing.JPanel;
 
