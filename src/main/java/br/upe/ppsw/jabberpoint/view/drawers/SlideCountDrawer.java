@@ -3,6 +3,7 @@ package br.upe.ppsw.jabberpoint.view.drawers;
 import java.awt.Graphics;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
 public class SlideCountDrawer {
 
@@ -10,9 +11,9 @@ public class SlideCountDrawer {
     private int yPosition;
     private PresentationController presentationController = PresentationController.getInstance();
 
-    public SlideCountDrawer(int x, int y) {
-        this.xPosition = x;
-        this.yPosition = y;
+    public SlideCountDrawer() {
+        this.xPosition = ApplicationFrame.WIDTH - 100;
+        this.yPosition = 20;
     }
 
     public String getSlideCounter() {

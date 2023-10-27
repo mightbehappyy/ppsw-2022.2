@@ -3,7 +3,6 @@ package br.upe.ppsw.jabberpoint.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 import javax.swing.JPanel;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
@@ -23,14 +22,14 @@ public class ContentPanel extends JPanel {
 
   private Font labelFont;
   private PresentationController presentationController;
-  private Slide slide;
+  private Slide slide = Slide.NULL_SLIDE;
   private SlideCountDrawer slidePageCounter;
   private SlideDrawer slideDrawer;
 
   public ContentPanel() {
-    this.slidePageCounter = new SlideCountDrawer(XPOS, YPOS);
+    this.slidePageCounter = new SlideCountDrawer();
     this.labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
-    this.slideDrawer = new SlideDrawer();
+    this.slideDrawer = new SlideDrawer(this);
     presentationController = PresentationController.getInstance();
     presentationController.setShowView(this);
 
@@ -49,14 +48,18 @@ public class ContentPanel extends JPanel {
 
     graphics.setFont(labelFont);
     graphics.setColor(COLOR);
+
     slidePageCounter.draw(graphics);
+    slideDrawer.draw(graphics, slide);
 
-    if (presentationController.getCurrentSlideNumber() < 0 || slide == null) {
-      return;
-    }
+  }
 
-    slideDrawer.draw(graphics, new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS)), slide, this);
+  public int getYPOS() {
+    return YPOS;
+  }
 
+  public int getXPOS() {
+    return XPOS;
   }
 
 }

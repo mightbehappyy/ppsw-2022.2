@@ -10,6 +10,10 @@ public abstract class SlideItem implements ILevelableItem {
     level = lev;
   }
 
+  protected SlideItem() {
+
+  }
+
   public int getLevel() {
     return level;
   }

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class Slide implements Serializable {
 
+  public static final NullSlide NULL_SLIDE = new NullSlide();
   private static final long serialVersionUID = 21917347L;
   private TextItem title;
   private ArrayList<SlideItem> items;
