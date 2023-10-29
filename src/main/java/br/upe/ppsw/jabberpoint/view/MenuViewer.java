@@ -26,7 +26,9 @@ public class MenuViewer extends MenuBar {
         fileMenu.add(new MenuNewFileButton("Novo"));
         fileMenu.add(new MenuOpenFileButton("Abrir"));
         fileMenu.add(new MenuSaveFileButton("Salvar"));
+
         addButtonSeparator();
+
         fileMenu.add(new MenuExitButton("Sair"));
 
         viewMenu.add(new MenuNextButton("Próximo"));

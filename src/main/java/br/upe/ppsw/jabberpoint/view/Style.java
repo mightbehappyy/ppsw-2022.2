@@ -24,7 +24,7 @@ public class Style {
 
   public static void createStyles() {
     styles = new Style[5];
-    styles[0] = new Style(0, Color.red, 48, 20); // nível 0
+    styles[0] = new Style(10, Color.red, 48, 20); // nível 0
     styles[1] = new Style(20, Color.blue, 40, 10); // nível 1
     styles[2] = new Style(50, Color.black, 36, 10); // nível 2
     styles[3] = new Style(70, Color.black, 30, 10); // nivel 3

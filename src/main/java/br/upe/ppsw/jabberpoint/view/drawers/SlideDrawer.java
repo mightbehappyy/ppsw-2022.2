@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
-import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 import br.upe.ppsw.jabberpoint.view.ContentPanel;
 import br.upe.ppsw.jabberpoint.view.Style;
 import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
@@ -18,36 +17,24 @@ public class SlideDrawer {
         this.panel = panel;
     }
 
-    public void draw(Graphics graphics, Slide slide) {
-        Rectangle area = new Rectangle(0, panel.getYPOS(), panel.getWidth(), (panel.getHeight() - panel.getYPOS()));
-
-        float scale = getScale(area);
-
-        int y = area.y;
-
-        SlideItem slideItem = slide.getTextItemTitle();
-
-        IDrawableItem baseItemDrawer = ItemFactory.createDrawer(slideItem);
-
-        Style style = Style.getStyle(slideItem.getLevel());
-        baseItemDrawer.draw(y, y, scale, graphics, style, panel);
-
-        y += baseItemDrawer.getBoundingBox(graphics, panel, scale, style).height;
+    public void draw(Graphics graphics, Slide slide, Rectangle area) {
+        SlideItem slideItem;
+        IDrawableItem baseItemDrawer;
+        Style style;
+        int itemHeight = area.y;
+        float scale = panel.getScreenScale(area);
 
         for (int number = 0; number < slide.getSize(); number++) {
             slideItem = slide.getSlideItems().get(number);
-            baseItemDrawer = ItemFactory.createDrawer(slideItem);
+
+            baseItemDrawer = DrawerCreator.createDrawer(slideItem);
 
             style = Style.getStyle(slideItem.getLevel());
-            baseItemDrawer.draw(area.x, y, scale, graphics, style, panel);
 
-            y += baseItemDrawer.getBoundingBox(graphics, panel, scale, style).height;
+            baseItemDrawer.draw(area.x, itemHeight, scale, graphics, style, panel);
+
+            itemHeight += baseItemDrawer.getBoundingBox(graphics, panel, scale, style).height;
         }
-    }
-
-    private float getScale(Rectangle area) {
-        return Math.min(((float) area.width) / (ApplicationFrame.WIDTH),
-                ((float) area.height) / (ApplicationFrame.HEIGHT));
     }
 
 }

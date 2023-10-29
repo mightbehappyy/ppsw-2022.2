@@ -1,8 +1,9 @@
 package br.upe.ppsw.jabberpoint.view;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+
 import javax.swing.JPanel;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
@@ -12,24 +13,18 @@ import br.upe.ppsw.jabberpoint.view.drawers.SlideCountDrawer;
 
 public class ContentPanel extends JPanel {
   private static final long serialVersionUID = 227L;
-  private static final Color BACKGROUND_COLOR = Color.white;
-  private static final Color COLOR = Color.black;
-  private static final String FONTNAME = "Dialog";
-  private static final int FONTSTYLE = Font.BOLD;
-  private static final int FONTHEIGHT = 10;
   private static final int XPOS = 1100;
   private static final int YPOS = 10;
 
-  private Font labelFont;
   private PresentationController presentationController;
-  private Slide slide = Slide.NULL_SLIDE;
-  private SlideCountDrawer slidePageCounter;
-  private SlideDrawer slideDrawer;
+  private transient Slide slide = Slide.NULL_SLIDE;
+  private transient SlideCountDrawer slidePageCounter;
+  private transient SlideDrawer slideDrawer;
 
   public ContentPanel() {
-    this.slidePageCounter = new SlideCountDrawer();
-    this.labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
     this.slideDrawer = new SlideDrawer(this);
+    this.slidePageCounter = new SlideCountDrawer(XPOS, YPOS);
+
     presentationController = PresentationController.getInstance();
     presentationController.setShowView(this);
 
@@ -42,24 +37,25 @@ public class ContentPanel extends JPanel {
 
   @Override
   public void paintComponent(Graphics graphics) {
+
     super.paintComponent(graphics);
 
-    setBackground(BACKGROUND_COLOR);
-
-    graphics.setFont(labelFont);
-    graphics.setColor(COLOR);
+    setBackground(Color.white);
 
     slidePageCounter.draw(graphics);
-    slideDrawer.draw(graphics, slide);
+    slideDrawer.draw(graphics, slide, getDrawableArea());
+
+    graphics.dispose();
 
   }
 
-  public int getYPOS() {
-    return YPOS;
+  public float getScreenScale(Rectangle area) {
+    return Math.min(((float) area.width) / (ApplicationFrame.WIDTH),
+        ((float) area.height) / (ApplicationFrame.HEIGHT));
   }
 
-  public int getXPOS() {
-    return XPOS;
+  private Rectangle getDrawableArea() {
+    return new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
   }
 
 }

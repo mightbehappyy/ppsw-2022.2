@@ -1,13 +1,11 @@
 package br.upe.ppsw.jabberpoint.model;
 
 import java.util.List;
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Slide implements Serializable {
+public class Slide {
 
   public static final NullSlide NULL_SLIDE = new NullSlide();
-  private static final long serialVersionUID = 21917347L;
   private TextItem title;
   private ArrayList<SlideItem> items;
 
@@ -25,6 +23,7 @@ public class Slide implements Serializable {
 
   public void setTitle(String newTitle) {
     title = new TextItem(0, newTitle);
+    append(title);
   }
 
   public String getTitle() {

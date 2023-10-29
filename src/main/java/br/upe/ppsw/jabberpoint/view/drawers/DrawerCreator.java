@@ -5,9 +5,9 @@ import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
 import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
 
-public class ItemFactory {
+public class DrawerCreator {
 
-        private ItemFactory() {
+        private DrawerCreator() {
 
         }
 

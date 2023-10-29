@@ -1,19 +1,21 @@
 package br.upe.ppsw.jabberpoint.view.drawers;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
-import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
 public class SlideCountDrawer {
 
     private int xPosition;
     private int yPosition;
-    private PresentationController presentationController = PresentationController.getInstance();
+    private final PresentationController presentationController = PresentationController.getInstance();
 
-    public SlideCountDrawer() {
-        this.xPosition = ApplicationFrame.WIDTH - 100;
-        this.yPosition = 20;
+    public SlideCountDrawer(int xPosition, int yPosition) {
+        this.xPosition = xPosition;
+        this.yPosition = yPosition;
+
     }
 
     public String getSlideCounter() {
@@ -22,6 +24,9 @@ public class SlideCountDrawer {
     }
 
     public void draw(Graphics graphics) {
+        Font labelFont = new Font("Dialog", Font.BOLD, 10);
+        graphics.setFont(labelFont);
+        graphics.setColor(Color.BLACK);
         graphics.drawString(getSlideCounter(), xPosition, yPosition);
     }
 

@@ -3,7 +3,7 @@ package br.upe.ppsw.jabberpoint.model;
 public class NullSlide extends Slide {
     @Override
     public String getTitle() {
-        return null;
+        return " ";
     }
 
     @Override
