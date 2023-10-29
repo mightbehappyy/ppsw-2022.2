@@ -23,7 +23,6 @@ public class SlideDrawer {
         Style style;
         int itemHeight = area.y;
         float scale = panel.getScreenScale(area);
-
         for (int number = 0; number < slide.getSize(); number++) {
             slideItem = slide.getSlideItems().get(number);
 

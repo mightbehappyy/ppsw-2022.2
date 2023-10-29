@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 import java.awt.font.TextLayout;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
-import java.util.Iterator;
 import java.util.List;
 
 import br.upe.ppsw.jabberpoint.model.TextItem;
@@ -29,10 +28,7 @@ public class TextItemDrawer implements IDrawableItem {
         int xsize = 0;
         int ysize = (int) (myStyle.getLeading() * scale);
 
-        Iterator<TextLayout> iterator = layouts.iterator();
-
-        while (iterator.hasNext()) {
-            TextLayout layout = iterator.next();
+        for (TextLayout layout : layouts) {
             Rectangle2D bounds = layout.getBounds();
 
             if (bounds.getWidth() > xsize) {
@@ -50,9 +46,6 @@ public class TextItemDrawer implements IDrawableItem {
 
     @Override
     public void draw(int x, int y, float scale, Graphics graphics, Style myStyle, ImageObserver o) {
-        if (textItem.getText() == null || textItem.getText().length() == 0) {
-            return;
-        }
 
         List<TextLayout> layouts = textItem.getLayouts(graphics, myStyle, scale);
         Point pen = new Point(x + (int) (myStyle.getIndent() * scale), y + (int) (myStyle.getLeading() * scale));
@@ -60,11 +53,7 @@ public class TextItemDrawer implements IDrawableItem {
         Graphics2D g2d = (Graphics2D) graphics;
         g2d.setColor(myStyle.getColor());
 
-        Iterator<TextLayout> iterator = layouts.iterator();
-
-        while (iterator.hasNext()) {
-            TextLayout layout = iterator.next();
-
+        for (TextLayout layout : layouts) {
             pen.y += layout.getAscent();
             layout.draw(g2d, pen.x, pen.y);
 

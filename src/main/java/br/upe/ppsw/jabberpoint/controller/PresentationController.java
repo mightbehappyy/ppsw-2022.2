@@ -1,7 +1,6 @@
 package br.upe.ppsw.jabberpoint.controller;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import br.upe.ppsw.jabberpoint.model.DemoPresentation;
@@ -9,9 +8,8 @@ import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 import br.upe.ppsw.jabberpoint.view.ContentPanel;
 
-public class PresentationController implements Serializable {
+public class PresentationController {
 
-  private static final long serialVersionUID = 1905122041950251207L;
   private ArrayList<Slide> showList;
   private ContentPanel contentPanel;
   private int currentSlideNumber;

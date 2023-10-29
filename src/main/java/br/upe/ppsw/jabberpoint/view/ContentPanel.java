@@ -37,7 +37,9 @@ public class ContentPanel extends JPanel {
 
   @Override
   public void paintComponent(Graphics graphics) {
-
+    if (slide == null) {
+      return;
+    }
     super.paintComponent(graphics);
 
     setBackground(Color.white);
