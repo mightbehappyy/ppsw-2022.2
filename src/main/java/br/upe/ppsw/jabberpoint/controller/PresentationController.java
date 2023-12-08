@@ -1,9 +1,7 @@
 package br.upe.ppsw.jabberpoint.controller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import br.upe.ppsw.jabberpoint.model.DemoPresentation;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 import br.upe.ppsw.jabberpoint.view.ContentPanel;
@@ -26,22 +24,6 @@ public class PresentationController {
       instance = new PresentationController();
     }
     return instance;
-  }
-
-  public void loadDemoPresentation(String... args) {
-    DemoPresentation demo = new DemoPresentation();
-    try {
-      if (args.length <= 1) {
-        demo.loadFile(this, null);
-      } else {
-        XMLAccessor.getInstance().loadFile(this, args[1]);
-      }
-
-      PresentationController.getInstance().setSlideNumber(0);
-
-    } catch (IOException ex) {
-      DialogBoxes.dialogErrorMessage(ex);
-    }
   }
 
   public int getSize() {
@@ -75,11 +57,13 @@ public class PresentationController {
     this.contentPanel = contentPanel;
   }
 
-  public Slide getSlide(int number) {
-    if (number < 0 || number >= getSize()) {
-      return null;
-    }
-    return showList.get(number);
+  public void append(Slide slide) {
+    showList.add(slide);
+  }
+
+  public void clear() {
+    showList = new ArrayList<>();
+    setSlideNumber(-1);
   }
 
   public Slide getCurrentSlide() {
@@ -90,13 +74,11 @@ public class PresentationController {
     return currentSlideNumber;
   }
 
-  public void clear() {
-    showList = new ArrayList<>();
-    setSlideNumber(-1);
-  }
-
-  public void append(Slide slide) {
-    showList.add(slide);
+  public Slide getSlide(int number) {
+    if (number < 0 || number >= getSize()) {
+      return null;
+    }
+    return showList.get(number);
   }
 
 }

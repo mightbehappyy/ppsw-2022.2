@@ -5,7 +5,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.controller.DemoPresentationLoader;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 import br.upe.ppsw.jabberpoint.view.Style;
 
@@ -26,7 +26,9 @@ public class JabberPointApplication implements CommandLineRunner {
 
     ApplicationFrame.setInstance("Jabberpoint");
 
-    PresentationController.getInstance().loadDemoPresentation(args);
+    DemoPresentationLoader presentationLoader = new DemoPresentationLoader();
+    presentationLoader.loadDemoPresentation(args);
+
   }
 
 }

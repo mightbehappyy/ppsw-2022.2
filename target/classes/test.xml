@@ -44,4 +44,50 @@
 		<item kind="text"  level="1"> </item>
 		<item kind="image"  level="1">classpath:JabberPoint.jpg</item>		
 	</slide>
+
+	<slide>
+    <title>Recursos Adicionais</title>
+    <item kind="text"  level="1">Recursos Interativos:</item>
+    <item kind="text"  level="2">Integração com Vídeos</item>
+    <item kind="text"  level="2">Enquetes ao Vivo</item>
+    <item kind="text"  level="1">Personalização:</item>
+    <item kind="text"  level="2">Temas Personalizáveis</item>
+    <item kind="text"  level="2">Fontes e Cores Customizáveis</item>
+</slide>
+
+<slide>
+    <title>Dicas de Apresentação</title>
+    <item kind="text"  level="1">Dicas para uma Apresentação Impactante:</item>
+    <item kind="text"  level="2">Mantenha o Conteúdo Conciso</item>
+    <item kind="text"  level="2">Use Gráficos e Imagens Relevantes</item>
+    <item kind="text"  level="2">Pratique a Fala e o Timing</item>
+    <item kind="text"  level="2">Interaja com a Audiência</item>
+</slide>
+
+<slide>
+    <title>Ferramentas de Colaboração</title>
+    <item kind="text"  level="1">Colabore em Tempo Real:</item>
+    <item kind="text"  level="2">Edição Colaborativa</item>
+    <item kind="text"  level="2">Compartilhamento de Comentários</item>
+    <item kind="text"  level="1">Integração com Outras Ferramentas:</item>
+    <item kind="text"  level="2">Google Drive</item>
+    <item kind="text"  level="2">Microsoft Office 365</item>
+</slide>
+
+<slide>
+    <title>Feedback dos Usuários</title>
+    <item kind="text"  level="1">O que os Usuários Estão Dizendo:</item>
+    <item kind="text"  level="2">"Interface Intuitiva e Fácil de Usar!"</item>
+    <item kind="text"  level="2">"Funcionalidades Avançadas para Profissionais"</item>
+    <item kind="text"  level="2">"Transformou Minhas Apresentações!"</item>
+</slide>
+
+<slide>
+    <title>Conclusão</title>
+    <item kind="text"  level="1">Aprimore Suas Apresentações com JabberPoint!</item>
+    <item kind="text"  level="1">Experimente Agora e Transforme Suas Ideias em Impacto!</item>
+    <item kind="text"  level="1"> </item>
+    
+</slide>
+
 </presentation>

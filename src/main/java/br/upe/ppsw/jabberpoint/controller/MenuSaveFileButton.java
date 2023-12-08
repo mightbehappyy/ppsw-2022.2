@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import br.upe.ppsw.jabberpoint.controller.acessors.XMLAccessor;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
 public class MenuSaveFileButton extends BaseMenuController {

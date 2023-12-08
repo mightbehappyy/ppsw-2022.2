@@ -8,26 +8,23 @@ import javax.swing.JPanel;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.Slide;
+import br.upe.ppsw.jabberpoint.model.SlideCountItem;
 import br.upe.ppsw.jabberpoint.view.drawers.SlideDrawer;
 import br.upe.ppsw.jabberpoint.view.drawers.SlideCountDrawer;
 
 public class ContentPanel extends JPanel {
   private static final long serialVersionUID = 227L;
-  private static final int XPOS = 1100;
-  private static final int YPOS = 10;
 
-  private PresentationController presentationController;
-  private transient Slide slide = Slide.NULL_SLIDE;
-  private transient SlideCountDrawer slidePageCounter;
+  private transient Slide slide;
+  private transient SlideCountItem slidePageCountItem;
   private transient SlideDrawer slideDrawer;
+  private transient SlideCountDrawer slideCountDrawer;
 
   public ContentPanel() {
     this.slideDrawer = new SlideDrawer(this);
-    this.slidePageCounter = new SlideCountDrawer(XPOS, YPOS);
-
-    presentationController = PresentationController.getInstance();
-    presentationController.setShowView(this);
-
+    this.slidePageCountItem = new SlideCountItem(1100, 20);
+    this.slideCountDrawer = new SlideCountDrawer(slidePageCountItem);
+    PresentationController.getInstance().setShowView(this);
   }
 
   public void update(Slide slide) {
@@ -44,11 +41,10 @@ public class ContentPanel extends JPanel {
 
     setBackground(Color.white);
 
-    slidePageCounter.draw(graphics);
+    slideCountDrawer.draw(graphics);
     slideDrawer.draw(graphics, slide, getDrawableArea());
 
     graphics.dispose();
-
   }
 
   public float getScreenScale(Rectangle area) {
@@ -57,7 +53,7 @@ public class ContentPanel extends JPanel {
   }
 
   private Rectangle getDrawableArea() {
-    return new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
+    return new Rectangle(0, 0, getWidth(), getHeight());
   }
 
 }

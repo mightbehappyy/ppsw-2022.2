@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Slide {
 
-  public static final NullSlide NULL_SLIDE = new NullSlide();
   private TextItem title;
   private ArrayList<SlideItem> items;
 

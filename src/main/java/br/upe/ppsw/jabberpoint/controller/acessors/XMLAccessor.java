@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.controller;
+package br.upe.ppsw.jabberpoint.controller.acessors;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,6 +14,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
@@ -85,6 +86,7 @@ public class XMLAccessor implements ILoadable, ISavable {
         maxItems = slideItems.getLength();
 
         for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
+
           Element item = (Element) slideItems.item(itemNumber);
           loadSlideItem(slide, item);
         }
