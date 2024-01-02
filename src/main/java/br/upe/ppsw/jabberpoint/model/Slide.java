@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Slide {
 
   private TextItem title;
-  private ArrayList<SlideItem> items;
+  private final ArrayList<SlideItem> items;
 
   public Slide() {
     items = new ArrayList<>();

@@ -1,0 +1,110 @@
+{
+  "presentation": {
+    "showtitle": "XML-Based Presentation for Jabberpoint",
+    "slides": [
+      {
+        "title": "JabberPoint JSON-Demo",
+        "items": [
+          {
+            "content": "Bem vindo ao Jabberpoint",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Copyright (c) 1996-2021 Ian Darwin",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Reescrito por",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Helaine Barreiros",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Navegação:",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Próximo Slide: PgDn ou Enter",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Slide Anterior: PgUp ou up-arrow",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Parar: q ou Q",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "classpath:upe_garanhuns.jpg",
+            "level": 1,
+            "kind": "image"
+          }
+        ]
+      },
+      {
+        "title": "Exemplo de um Slide vazio",
+        "items": []
+      },
+      {
+        "title": "Exemplo de um Slide vazio",
+        "items": []
+      },
+      {
+        "title": "Fundo",
+        "items": [
+          {
+            "content": "Jabberpoint é um projeto utilizado na",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "disciplina de Padrões de Projeto de Software do curso de Engenharia de Engenharia de Software da Universidade de Pernambuco",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": " ",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "classpath:upe.jpg",
+            "level": 1,
+            "kind": "image"
+          },
+          {
+            "content": " ",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Do Multicampi Garanhuns",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": " ",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "classpath:upe_garanhuns.jpg",
+            "level": 1,
+            "kind": "image"
+          }
+        ]
+      }
+    ]
+  }
+}

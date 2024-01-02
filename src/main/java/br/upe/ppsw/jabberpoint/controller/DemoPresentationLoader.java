@@ -7,7 +7,7 @@ import br.upe.ppsw.jabberpoint.model.DemoPresentation;
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 
 public class DemoPresentationLoader {
-    private PresentationController presentationController = PresentationController.getInstance();
+    private final PresentationController presentationController = PresentationController.getInstance();
 
     public void loadDemoPresentation(String... args) {
         DemoPresentation demo = new DemoPresentation();

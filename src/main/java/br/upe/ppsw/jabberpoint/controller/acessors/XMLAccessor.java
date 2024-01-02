@@ -53,10 +53,9 @@ public class XMLAccessor implements ILoadable, ISavable {
     return instance;
   }
 
-  private String getTitle(Element element, String tagName) {
-    NodeList titles = element.getElementsByTagName(tagName);
+  private String getTitle(Element element) {
+    NodeList titles = element.getElementsByTagName(XMLAccessor.SLIDETITLE);
     return titles.item(0).getTextContent();
-
   }
 
   public void loadFile(PresentationController presentation, String filename) throws IOException {
@@ -79,7 +78,7 @@ public class XMLAccessor implements ILoadable, ISavable {
         Element xmlSlide = (Element) slides.item(slideNumber);
 
         Slide slide = new Slide();
-        slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
+        slide.setTitle(getTitle(xmlSlide));
         presentation.append(slide);
 
         NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);

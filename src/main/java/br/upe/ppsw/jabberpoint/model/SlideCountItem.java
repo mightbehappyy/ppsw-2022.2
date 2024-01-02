@@ -4,8 +4,8 @@ import br.upe.ppsw.jabberpoint.controller.PresentationController;
 
 public class SlideCountItem {
 
-    private int xPosition;
-    private int yPosition;
+    private final int xPosition;
+    private final int yPosition;
     private final PresentationController presentationController = PresentationController.getInstance();
 
     public SlideCountItem(int xPosition, int yPosition) {

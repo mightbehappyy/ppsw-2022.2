@@ -13,9 +13,9 @@ import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 public class MenuSaveFileButton extends BaseMenuController {
     protected static final String TESTFILE = "classpath:test.xml";
 
-    private static XMLAccessor xmlAccessorInstance = XMLAccessor.getInstance();
-    private static PresentationController presentationControllerInstance = PresentationController.getInstance();
-    private static ApplicationFrame slideViewerFrameInstance = ApplicationFrame.getInstance();
+    private static final XMLAccessor xmlAccessorInstance = XMLAccessor.getInstance();
+    private static final PresentationController presentationControllerInstance = PresentationController.getInstance();
+    private static final ApplicationFrame slideViewerFrameInstance = ApplicationFrame.getInstance();
     private static final String SAVEFILE = "classpath:dump.xml";
 
     public MenuSaveFileButton(String buttonPlaceholder) {

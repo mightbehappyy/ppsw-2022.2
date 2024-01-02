@@ -15,11 +15,16 @@ import br.upe.ppsw.jabberpoint.view.Style;
 
 public class TextItem extends SlideItem {
 
-  private String text;
+  private final String text;
 
   public TextItem(int level, String string) {
     super(level);
     text = string;
+  }
+
+  public TextItem () {
+    super(1);
+    text = " ";
   }
 
   public String getText() {

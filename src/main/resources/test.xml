@@ -13,6 +13,7 @@
 		<item kind="text"  level="2">Slide Anterior: PgUp ou up-arrow</item>
 		<item kind="text"  level="2">Parar: q ou Q</item>
 	</slide>
+
 	<slide>
 		<title>Exemplo de um Slide vazio</title>
 		<item kind="text"  level="1"> </item>

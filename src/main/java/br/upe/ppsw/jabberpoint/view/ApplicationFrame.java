@@ -20,11 +20,10 @@ public class ApplicationFrame extends JFrame {
     setupWindowFrame();
   }
 
-  public static ApplicationFrame setInstance(String title) {
+  public static void setInstance(String title) {
     if (instance == null) {
       instance = new ApplicationFrame(title);
     }
-    return instance;
 
   }
 

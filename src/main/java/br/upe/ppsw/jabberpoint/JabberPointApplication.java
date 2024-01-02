@@ -29,6 +29,8 @@ public class JabberPointApplication implements CommandLineRunner {
     DemoPresentationLoader presentationLoader = new DemoPresentationLoader();
     presentationLoader.loadDemoPresentation(args);
 
+
+
   }
 
 }

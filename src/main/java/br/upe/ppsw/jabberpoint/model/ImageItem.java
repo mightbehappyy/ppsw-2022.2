@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class ImageItem extends SlideItem {
 
   private BufferedImage bufferedImage;
-  private String imageFilePath;
+  private final String imageFilePath;
   private static final Logger logger = LoggerFactory.getLogger(ImageItem.class);
 
   protected static final String FILE = "Arquivo ";

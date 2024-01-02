@@ -16,13 +16,12 @@ public class ContentPanel extends JPanel {
   private static final long serialVersionUID = 227L;
 
   private transient Slide slide;
-  private transient SlideCountItem slidePageCountItem;
-  private transient SlideDrawer slideDrawer;
-  private transient SlideCountDrawer slideCountDrawer;
+  private final transient SlideDrawer slideDrawer;
+  private final transient SlideCountDrawer slideCountDrawer;
 
   public ContentPanel() {
     this.slideDrawer = new SlideDrawer(this);
-    this.slidePageCountItem = new SlideCountItem(1100, 20);
+    SlideCountItem slidePageCountItem = new SlideCountItem(1100, 20);
     this.slideCountDrawer = new SlideCountDrawer(slidePageCountItem);
     PresentationController.getInstance().setShowView(this);
   }

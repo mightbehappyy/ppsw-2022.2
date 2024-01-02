@@ -7,20 +7,18 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import br.upe.ppsw.jabberpoint.controller.acessors.JSONAccessor;
 import org.springframework.util.ResourceUtils;
 
-import br.upe.ppsw.jabberpoint.controller.acessors.XMLAccessor;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
-public class MenuOpenFileButton extends BaseMenuController {
-    protected static final String TESTFILE = "classpath:test.xml";
-
-    private static final XMLAccessor xmlAccessorInstance = XMLAccessor.getInstance();
+public class MenuOpenJSONFileButton extends BaseMenuController {
+    protected static final String TESTFILE = "classpath:test.json";
     private static final PresentationController presentationControllerInstance = PresentationController.getInstance();
     private static final ApplicationFrame slideViewerFrameInstance = ApplicationFrame.getInstance();
 
-    public MenuOpenFileButton(String buttonPlaceholder) {
-        super(buttonPlaceholder, new MenuShortcut(KeyEvent.VK_O, true));
+    public MenuOpenJSONFileButton(String buttonPlaceholder) {
+        super(buttonPlaceholder, new MenuShortcut(KeyEvent.VK_J, true));
     }
 
     @Override
@@ -28,8 +26,8 @@ public class MenuOpenFileButton extends BaseMenuController {
 
         PresentationController.getInstance().clear();
         try {
-
-            xmlAccessorInstance.loadFile(PresentationController.getInstance(),
+            JSONAccessor jsonAccessor = new JSONAccessor();
+            jsonAccessor.loadFile(PresentationController.getInstance(),
                     ResourceUtils.getFile(TESTFILE).getAbsolutePath());
             presentationControllerInstance.setSlideNumber(0);
         } catch (IOException exc) {

@@ -3,31 +3,21 @@ package br.upe.ppsw.jabberpoint.view;
 import java.awt.Menu;
 import java.awt.MenuBar;
 
-import br.upe.ppsw.jabberpoint.controller.MenuAboutButton;
-import br.upe.ppsw.jabberpoint.controller.MenuExitButton;
-import br.upe.ppsw.jabberpoint.controller.MenuGoToButton;
-import br.upe.ppsw.jabberpoint.controller.MenuNewFileButton;
-import br.upe.ppsw.jabberpoint.controller.MenuNextButton;
-import br.upe.ppsw.jabberpoint.controller.MenuOpenFileButton;
-import br.upe.ppsw.jabberpoint.controller.MenuPreviousButton;
-import br.upe.ppsw.jabberpoint.controller.MenuSaveFileButton;
+import br.upe.ppsw.jabberpoint.controller.*;
 
 public class MenuViewer extends MenuBar {
 
-    private Menu fileMenu;
-    private Menu viewMenu;
-    private Menu helpMenu;
-
     public MenuViewer() {
-        fileMenu = new Menu("Arquivo");
-        viewMenu = new Menu("Visualizar");
-        helpMenu = new Menu("Ajuda");
+        Menu fileMenu = new Menu("Arquivo");
+        Menu viewMenu = new Menu("Visualizar");
+        Menu helpMenu = new Menu("Ajuda");
+
 
         fileMenu.add(new MenuNewFileButton("Novo"));
         fileMenu.add(new MenuOpenFileButton("Abrir"));
         fileMenu.add(new MenuSaveFileButton("Salvar"));
-
-        addButtonSeparator();
+        fileMenu.add((new MenuOpenJSONFileButton("Abrir JSON")));
+        fileMenu.addSeparator();
 
         fileMenu.add(new MenuExitButton("Sair"));
 
@@ -41,9 +31,4 @@ public class MenuViewer extends MenuBar {
         add(viewMenu);
         setHelpMenu(helpMenu);
     }
-
-    private void addButtonSeparator() {
-        this.fileMenu.addSeparator();
-    }
-
 }
