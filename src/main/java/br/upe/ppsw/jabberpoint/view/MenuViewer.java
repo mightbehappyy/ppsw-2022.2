@@ -17,6 +17,8 @@ public class MenuViewer extends MenuBar {
         fileMenu.add(new MenuOpenFileButton("Abrir"));
         fileMenu.add(new MenuSaveFileButton("Salvar"));
         fileMenu.add((new MenuOpenJSONFileButton("Abrir JSON")));
+        fileMenu.add((new MenuOpenHTMLFileButton("Abrir HTML")));
+        fileMenu.add((new MenuOpenYAMLFileButton("Abrir YAML")));
         fileMenu.addSeparator();
 
         fileMenu.add(new MenuExitButton("Sair"));

@@ -19,6 +19,9 @@ public class TextItem extends SlideItem {
 
   public TextItem(int level, String string) {
     super(level);
+    if (string.isEmpty()) {
+      string = " ";
+    }
     text = string;
   }
 

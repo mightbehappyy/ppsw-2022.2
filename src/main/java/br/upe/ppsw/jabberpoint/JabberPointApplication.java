@@ -1,13 +1,12 @@
 package br.upe.ppsw.jabberpoint;
 
+import br.upe.ppsw.jabberpoint.controller.DemoPresentationLoader;
+import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
+import br.upe.ppsw.jabberpoint.view.Style;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-
-import br.upe.ppsw.jabberpoint.controller.DemoPresentationLoader;
-import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
-import br.upe.ppsw.jabberpoint.view.Style;
 
 @SpringBootApplication
 public class JabberPointApplication implements CommandLineRunner {
@@ -21,16 +20,12 @@ public class JabberPointApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-
     Style.createStyles();
 
     ApplicationFrame.setInstance("Jabberpoint");
 
     DemoPresentationLoader presentationLoader = new DemoPresentationLoader();
     presentationLoader.loadDemoPresentation(args);
-
-
-
   }
 
 }

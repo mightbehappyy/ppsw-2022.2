@@ -8,7 +8,7 @@ import br.upe.ppsw.jabberpoint.model.SlideCountItem;
 
 public class SlideCountDrawer {
 
-    private SlideCountItem slideCountItem;
+    private final SlideCountItem slideCountItem;
 
     public SlideCountDrawer(SlideCountItem slideCountItem) {
         this.slideCountItem = slideCountItem;

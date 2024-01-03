@@ -11,7 +11,7 @@ import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
 
 public class SlideDrawer {
 
-    private ContentPanel panel;
+    private final ContentPanel panel;
 
     public SlideDrawer(ContentPanel panel) {
         this.panel = panel;

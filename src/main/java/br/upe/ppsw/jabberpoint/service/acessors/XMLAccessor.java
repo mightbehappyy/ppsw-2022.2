@@ -49,7 +49,6 @@ public class XMLAccessor implements ILoadable, ISavable {
     if (instance == null) {
       instance = new XMLAccessor();
     }
-
     return instance;
   }
 
@@ -65,6 +64,9 @@ public class XMLAccessor implements ILoadable, ISavable {
     int maxItems = 0;
 
     try {
+
+
+
       DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
       Document document = builder.parse(new File(filename));

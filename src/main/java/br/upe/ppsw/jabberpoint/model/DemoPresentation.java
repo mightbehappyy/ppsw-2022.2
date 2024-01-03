@@ -4,8 +4,8 @@ import java.io.FileNotFoundException;
 import org.springframework.util.ResourceUtils;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
-import br.upe.ppsw.jabberpoint.model.interfaces.ILoadable;
-import br.upe.ppsw.jabberpoint.model.interfaces.ISavable;
+import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
+import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
 
 public class DemoPresentation implements ILoadable, ISavable {
   public void loadFile(PresentationController presentation, String unusedFilename)

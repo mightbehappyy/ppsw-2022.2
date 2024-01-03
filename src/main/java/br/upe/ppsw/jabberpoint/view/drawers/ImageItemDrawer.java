@@ -10,7 +10,7 @@ import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
 
 public class ImageItemDrawer implements IDrawableItem {
 
-    private ImageItem imageItem;
+    private final ImageItem imageItem;
 
     public ImageItemDrawer(ImageItem imageItem) {
         this.imageItem = imageItem;

@@ -2,7 +2,7 @@ package br.upe.ppsw.jabberpoint.controller;
 
 import java.io.IOException;
 
-import br.upe.ppsw.jabberpoint.controller.acessors.XMLAccessor;
+import br.upe.ppsw.jabberpoint.service.acessors.XMLAccessor;
 import br.upe.ppsw.jabberpoint.model.DemoPresentation;
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 
