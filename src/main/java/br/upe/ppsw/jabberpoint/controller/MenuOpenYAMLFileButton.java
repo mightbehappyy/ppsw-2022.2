@@ -29,7 +29,7 @@ public class MenuOpenYAMLFileButton extends BaseMenuController {
         try {
             YAMLAccessor yamlAccessor = new YAMLAccessor();
             yamlAccessor.loadFile(PresentationController.getInstance(),
-                    ResourceUtils.getFile(TESTFILE).getAbsolutePath());
+                    TESTFILE);
             presentationControllerInstance.setSlideNumber(0);
         } catch (IOException exc) {
             JOptionPane.showMessageDialog(slideViewerFrameInstance, "IO Exception: " + exc, "Erro ao carregar",

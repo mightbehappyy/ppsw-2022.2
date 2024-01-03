@@ -32,7 +32,7 @@ public class HTMLAccessor implements ILoadable, ISavable {
                 Slide slide = new Slide();
                 setSlideTitle(items, slide);
                 for (Element elements : items.children()) {
-                    slide.append(setSlideItem(elements, slide));
+                    slide.append(setSlideItem(elements));
                 }
 
                 presentation.append(slide);
@@ -52,7 +52,7 @@ public class HTMLAccessor implements ILoadable, ISavable {
        return parseFile(fileName).select(".slide");
     }
 
-    private SlideItem setSlideItem(Element elements, Slide slide) {
+    private SlideItem setSlideItem(Element elements) {
         String kind = elements.attr("kind");
         String level = elements.attr("level");
         String content = elements.text();

@@ -41,7 +41,7 @@ public class YAMLAccessor implements ILoadable, ISavable {
         Yaml yaml = new Yaml();
         InputStream inputStream = this.getClass()
                 .getClassLoader()
-                .getResourceAsStream("test.yaml");
+                .getResourceAsStream(fileName);
 
         return yaml.load(inputStream);
     }
