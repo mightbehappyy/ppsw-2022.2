@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.controller.acessors;
+package br.upe.ppsw.jabberpoint.service.acessors;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -19,8 +19,8 @@ import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
-import br.upe.ppsw.jabberpoint.model.interfaces.ILoadable;
-import br.upe.ppsw.jabberpoint.model.interfaces.ISavable;
+import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
+import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
 
 public class XMLAccessor implements ILoadable, ISavable {
 

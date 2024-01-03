@@ -1,6 +1,6 @@
 {
   "presentation": {
-    "showtitle": "XML-Based Presentation for Jabberpoint",
+    "showtitle": "JSON-Based Presentation for Jabberpoint",
     "slides": [
       {
         "title": "JabberPoint JSON-Demo",
@@ -44,32 +44,24 @@
             "content": "Parar: q ou Q",
             "level": 2,
             "kind": "text"
-          },
-          {
-            "content": "classpath:upe_garanhuns.jpg",
-            "level": 1,
-            "kind": "image"
           }
         ]
       },
       {
         "title": "Exemplo de um Slide vazio",
-        "items": []
-      },
-      {
-        "title": "Exemplo de um Slide vazio",
-        "items": []
+        "items": [
+          {
+            "content": "",
+            "level": 1,
+            "kind": "text"
+          }
+        ]
       },
       {
         "title": "Fundo",
         "items": [
           {
-            "content": "Jabberpoint é um projeto utilizado na",
-            "level": 1,
-            "kind": "text"
-          },
-          {
-            "content": "disciplina de Padrões de Projeto de Software do curso de Engenharia de Engenharia de Software da Universidade de Pernambuco",
+            "content": "Jabberpoint é um projeto utilizado na disciplina de Padrões de Projeto de Software do curso de Engenharia de Engenharia de Software da Universidade de Pernambuco",
             "level": 1,
             "kind": "text"
           },
@@ -80,7 +72,7 @@
           },
           {
             "content": "classpath:upe.jpg",
-            "level": 1,
+            "level": 2,
             "kind": "image"
           },
           {
@@ -100,8 +92,213 @@
           },
           {
             "content": "classpath:upe_garanhuns.jpg",
+            "level": 2,
+            "kind": "image"
+          }
+        ]
+      },
+      {
+        "title": "JabberPoint: Níveis e Estilos",
+        "items": [
+          {
+            "content": "Nível 1",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Nível 2",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Apresentação Jabber",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Nível 2 tem Estilo 2",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Nível 3 tem este estilo",
+            "level": 3,
+            "kind": "text"
+          },
+          {
+            "content": "E o nível 4 tem este",
+            "level": 4,
+            "kind": "text"
+          }
+        ]
+      },
+      {
+        "title": "Slide Final",
+        "items": [
+          {
+            "content": "Você também pode navegar através do menu",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Arquivo->Abrir",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": " ",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "classpath:JabberPoint.jpg",
             "level": 1,
             "kind": "image"
+          }
+        ]
+      },
+      {
+        "title": "Recursos Adicionais",
+        "items": [
+          {
+            "content": "Recursos Interativos:",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Integração com Vídeos",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Enquetes ao Vivo",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Personalização:",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Temas Personalizáveis",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Fontes e Cores Customizáveis",
+            "level": 2,
+            "kind": "text"
+          }
+        ]
+      },
+      {
+        "title": "Dicas de Apresentação",
+        "items": [
+          {
+            "content": "Dicas para uma Apresentação Impactante:",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Mantenha o Conteúdo Conciso",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Use Gráficos e Imagens Relevantes",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Pratique a Fala e o Timing",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Interaja com a Audiência",
+            "level": 2,
+            "kind": "text"
+          }
+        ]
+      },
+      {
+        "title": "Ferramentas de Colaboração",
+        "items": [
+          {
+            "content": "Colabore em Tempo Real:",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Edição Colaborativa",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Compartilhamento de Comentários",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Integração com Outras Ferramentas:",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Google Drive",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "Microsoft Office 365",
+            "level": 2,
+            "kind": "text"
+          }
+        ]
+      },
+      {
+        "title": "Feedback dos Usuários",
+        "items": [
+          {
+            "content": "O que os Usuários Estão Dizendo:",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "\"Interface Intuitiva e Fácil de Usar!\"",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "\"Funcionalidades Avançadas para Profissionais\"",
+            "level": 2,
+            "kind": "text"
+          },
+          {
+            "content": "\"Transformou Minhas Apresentações!\"",
+            "level": 2,
+            "kind": "text"
+          }
+        ]
+      },
+      {
+        "title": "Conclusão",
+        "items": [
+          {
+            "content": "Aprimore Suas Apresentações com JabberPoint!",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": "Experimente Agora e Transforme Suas Ideias em Impacto!",
+            "level": 1,
+            "kind": "text"
+          },
+          {
+            "content": " ",
+            "level": 1,
+            "kind": "text"
           }
         ]
       }

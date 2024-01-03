@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-import br.upe.ppsw.jabberpoint.controller.acessors.JSONAccessor;
+import br.upe.ppsw.jabberpoint.service.acessors.JSONAccessor;
 import org.springframework.util.ResourceUtils;
 
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
