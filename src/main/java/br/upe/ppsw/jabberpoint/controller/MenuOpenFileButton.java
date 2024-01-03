@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 import org.springframework.util.ResourceUtils;
 
-import br.upe.ppsw.jabberpoint.controller.acessors.XMLAccessor;
+import br.upe.ppsw.jabberpoint.service.acessors.XMLAccessor;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
 public class MenuOpenFileButton extends BaseMenuController {
