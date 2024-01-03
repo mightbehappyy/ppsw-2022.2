@@ -3,6 +3,7 @@ package br.upe.ppsw.jabberpoint.service.acessors;
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
+import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
@@ -30,7 +31,7 @@ public class YAMLAccessor implements ILoadable, ISavable {
             setSlideTitle(slideMap, slide);
 
             for (Object slideItem : (List<Object>) slideMap.get("items")) {
-                setSlideItem((LinkedHashMap<String, Object>) slideItem, slide);
+                slide.append(setSlideItem((LinkedHashMap<String, Object>) slideItem));
             }
             presentation.append(slide);
         }
@@ -50,16 +51,17 @@ public class YAMLAccessor implements ILoadable, ISavable {
         return (List<Object>) presentationMap.get("slides");
     }
 
-    private void setSlideItem(LinkedHashMap<String, Object> slideItem, Slide slide) {
+    private SlideItem setSlideItem(LinkedHashMap<String, Object> slideItem) {
         String content = slideItem.get("content").toString();
         int level = Integer.parseInt(slideItem.get("level").toString());
         String kind =  slideItem.get("kind").toString();
 
        if ("text".equals(kind)) {
-            slide.append(new TextItem(level, content));
+           return new TextItem(level, content);
         } else if ("image".equals(kind)) {
-            slide.append(new ImageItem(level, content));
+           return new ImageItem(level, content);
         }
+       return new TextItem();
     }
 
     private void setSlideTitle(Map<String, Object> slideMap, Slide slide) {

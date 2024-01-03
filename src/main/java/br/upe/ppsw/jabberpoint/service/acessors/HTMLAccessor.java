@@ -3,6 +3,7 @@ package br.upe.ppsw.jabberpoint.service.acessors;
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
+import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
@@ -31,7 +32,7 @@ public class HTMLAccessor implements ILoadable, ISavable {
                 Slide slide = new Slide();
                 setSlideTitle(items, slide);
                 for (Element elements : items.children()) {
-                    setSlideItem(elements, slide);
+                    slide.append(setSlideItem(elements, slide));
                 }
 
                 presentation.append(slide);
@@ -51,16 +52,17 @@ public class HTMLAccessor implements ILoadable, ISavable {
        return parseFile(fileName).select(".slide");
     }
 
-    private void setSlideItem(Element elements, Slide slide) {
+    private SlideItem setSlideItem(Element elements, Slide slide) {
         String kind = elements.attr("kind");
         String level = elements.attr("level");
         String content = elements.text();
         String imgString = elements.attr("src");
         if ("text".equals(kind)) {
-            slide.append(new TextItem(Integer.parseInt(level), content));
+            return new TextItem(Integer.parseInt(level), content);
         } else if ("image".equals(kind)) {
-            slide.append(new ImageItem(Integer.parseInt(level), imgString));
+            return new ImageItem(Integer.parseInt(level), imgString);
         }
+        return new TextItem();
     }
 
     private void setSlideTitle(Element items, Slide slide) {

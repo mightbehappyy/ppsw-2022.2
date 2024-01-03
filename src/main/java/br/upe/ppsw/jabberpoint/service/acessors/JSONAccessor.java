@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
+import br.upe.ppsw.jabberpoint.model.SlideItem;
 import br.upe.ppsw.jabberpoint.model.TextItem;
 import org.json.simple.*;
 import org.json.simple.parser.*;
@@ -32,7 +33,8 @@ public class JSONAccessor implements ILoadable, ISavable {
                 Slide slide = new Slide();
                 setSlideTitle(jsonSlide, slide);
                 for (Object itemObj : (JSONArray) jsonSlide.get("items")) {
-                    setSlideItem((JSONObject) itemObj, slide);
+                    slide.append(setSlideItem((JSONObject) itemObj));
+
                 }
 
                 presentation.append(slide);
@@ -56,15 +58,16 @@ public class JSONAccessor implements ILoadable, ISavable {
         return (JSONArray) presentation.get("slides");
     }
 
-    private void setSlideItem(JSONObject itemObj, Slide slide) {
+    private SlideItem setSlideItem(JSONObject itemObj) {
         String content = itemObj.get("content").toString();
         int level = Integer.parseInt(itemObj.get("level").toString());
         String kind = itemObj.get("kind").toString();
         if (kind.equals("text")) {
-            slide.append(new TextItem(level, content));
+            return new TextItem(level, content);
         } else if (kind.equals("image")) {
-            slide.append(new ImageItem(level, content));
+            return new ImageItem(level, content);
         }
+        return new TextItem();
     }
 
     private void setSlideTitle(JSONObject jsonSlide, Slide slide) {
