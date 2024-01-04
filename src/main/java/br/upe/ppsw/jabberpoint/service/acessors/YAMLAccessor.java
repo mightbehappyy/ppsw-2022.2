@@ -9,6 +9,8 @@ import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedHashMap;
@@ -37,13 +39,11 @@ public class YAMLAccessor implements ILoadable, ISavable {
         }
     }
 
-    private Map<String, Object> parseFile(String fileName) {
+    private Map<String, Object> parseFile(String fileName) throws FileNotFoundException {
         Yaml yaml = new Yaml();
-        InputStream inputStream = this.getClass()
-                .getClassLoader()
-                .getResourceAsStream(fileName);
+        FileInputStream in = new FileInputStream(fileName);
 
-        return yaml.load(inputStream);
+        return yaml.load(in);
     }
 
     private List<Object> getPresentationItems(Map<String, Object> parseFile) {

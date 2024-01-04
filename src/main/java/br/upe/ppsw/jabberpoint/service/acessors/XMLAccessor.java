@@ -41,16 +41,10 @@ public class XMLAccessor implements ILoadable, ISavable {
 
   private static XMLAccessor instance = null;
 
-  private XMLAccessor() {
+  public XMLAccessor() {
     super();
   }
 
-  public static XMLAccessor getInstance() {
-    if (instance == null) {
-      instance = new XMLAccessor();
-    }
-    return instance;
-  }
 
   private String getTitle(Element element) {
     NodeList titles = element.getElementsByTagName(XMLAccessor.SLIDETITLE);

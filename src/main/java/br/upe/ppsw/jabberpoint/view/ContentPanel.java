@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.Slide;
@@ -44,6 +44,7 @@ public class ContentPanel extends JPanel {
     slideDrawer.draw(graphics, slide, getDrawableArea());
 
     graphics.dispose();
+
   }
 
   public float getScreenScale(Rectangle area) {

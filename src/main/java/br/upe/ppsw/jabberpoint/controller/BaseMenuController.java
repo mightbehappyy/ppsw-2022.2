@@ -3,6 +3,7 @@ package br.upe.ppsw.jabberpoint.controller;
 import java.awt.MenuItem;
 import java.awt.MenuShortcut;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 abstract class BaseMenuController extends MenuItem {
 

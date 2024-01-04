@@ -8,6 +8,8 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
+import javax.swing.*;
+
 @SpringBootApplication
 public class JabberPointApplication implements CommandLineRunner {
 
@@ -26,6 +28,7 @@ public class JabberPointApplication implements CommandLineRunner {
 
     DemoPresentationLoader presentationLoader = new DemoPresentationLoader();
     presentationLoader.loadDemoPresentation(args);
+
   }
 
 }

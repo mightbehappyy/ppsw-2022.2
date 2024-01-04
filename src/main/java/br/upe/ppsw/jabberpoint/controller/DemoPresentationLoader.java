@@ -15,7 +15,8 @@ public class DemoPresentationLoader {
             if (args.length <= 1) {
                 demo.loadFile(presentationController, null);
             } else {
-                XMLAccessor.getInstance().loadFile(presentationController, args[1]);
+                XMLAccessor xmlAccessor = new XMLAccessor();
+                xmlAccessor.loadFile(presentationController, args[1]);
             }
 
             PresentationController.getInstance().setSlideNumber(0);
