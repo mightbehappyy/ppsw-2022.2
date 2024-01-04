@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
-import br.upe.ppsw.jabberpoint.model.ImageItem;
+import br.upe.ppsw.jabberpoint.model.items.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
-import br.upe.ppsw.jabberpoint.model.SlideItem;
-import br.upe.ppsw.jabberpoint.model.TextItem;
+import br.upe.ppsw.jabberpoint.model.items.SlideItem;
+import br.upe.ppsw.jabberpoint.model.items.TextItem;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 

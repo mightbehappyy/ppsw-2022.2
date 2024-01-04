@@ -1,8 +1,9 @@
-package br.upe.ppsw.jabberpoint.model;
+package br.upe.ppsw.jabberpoint.model.items;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+
 import org.springframework.util.ResourceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

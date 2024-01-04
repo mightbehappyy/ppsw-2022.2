@@ -6,24 +6,23 @@ import java.awt.Rectangle;
 
 import javax.swing.*;
 
-import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.Slide;
-import br.upe.ppsw.jabberpoint.model.SlideCountItem;
+import br.upe.ppsw.jabberpoint.model.items.SlideCountItem;
+import br.upe.ppsw.jabberpoint.model.SlideNullObject;
 import br.upe.ppsw.jabberpoint.view.drawers.SlideDrawer;
 import br.upe.ppsw.jabberpoint.view.drawers.SlideCountDrawer;
 
 public class ContentPanel extends JPanel {
   private static final long serialVersionUID = 227L;
-
   private transient Slide slide;
   private final transient SlideDrawer slideDrawer;
   private final transient SlideCountDrawer slideCountDrawer;
 
   public ContentPanel() {
     this.slideDrawer = new SlideDrawer(this);
-    SlideCountItem slidePageCountItem = new SlideCountItem(1100, 20);
-    this.slideCountDrawer = new SlideCountDrawer(slidePageCountItem);
+    this.slideCountDrawer = new SlideCountDrawer(new SlideCountItem(1100, 20));
+    this.slide = new SlideNullObject();
     Presentation.getInstance().setContentPanel(this);
   }
 
@@ -34,9 +33,7 @@ public class ContentPanel extends JPanel {
 
   @Override
   public void paintComponent(Graphics graphics) {
-    if (slide == null) {
-      return;
-    }
+
     super.paintComponent(graphics);
 
     setBackground(Color.white);
@@ -52,8 +49,6 @@ public class ContentPanel extends JPanel {
     return Math.min(((float) area.width) / (ApplicationFrame.WIDTH),
         ((float) area.height) / (ApplicationFrame.HEIGHT));
   }
-
-
 
   private Rectangle getDrawableArea() {
     return new Rectangle(0, 0, getWidth(), getHeight());

@@ -3,6 +3,7 @@ package br.upe.ppsw.jabberpoint.model;
 import java.io.FileNotFoundException;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.items.ImageItem;
 import org.springframework.util.ResourceUtils;
 
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;

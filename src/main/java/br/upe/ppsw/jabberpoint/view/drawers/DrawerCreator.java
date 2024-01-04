@@ -1,8 +1,8 @@
 package br.upe.ppsw.jabberpoint.view.drawers;
 
-import br.upe.ppsw.jabberpoint.model.ImageItem;
-import br.upe.ppsw.jabberpoint.model.SlideItem;
-import br.upe.ppsw.jabberpoint.model.TextItem;
+import br.upe.ppsw.jabberpoint.model.items.ImageItem;
+import br.upe.ppsw.jabberpoint.model.items.SlideItem;
+import br.upe.ppsw.jabberpoint.model.items.TextItem;
 import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
 
 public class DrawerCreator {

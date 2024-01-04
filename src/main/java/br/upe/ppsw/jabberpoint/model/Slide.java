@@ -1,5 +1,8 @@
 package br.upe.ppsw.jabberpoint.model;
 
+import br.upe.ppsw.jabberpoint.model.items.SlideItem;
+import br.upe.ppsw.jabberpoint.model.items.TextItem;
+
 import java.util.List;
 import java.util.ArrayList;
 

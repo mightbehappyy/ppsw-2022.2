@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.model;
+package br.upe.ppsw.jabberpoint.model.items;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -10,6 +10,7 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 import br.upe.ppsw.jabberpoint.view.Style;
 

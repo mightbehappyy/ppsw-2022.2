@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.model;
+package br.upe.ppsw.jabberpoint.model.items;
 
 import br.upe.ppsw.jabberpoint.model.interfaces.ILevelableItem;
 

@@ -1,6 +1,7 @@
-package br.upe.ppsw.jabberpoint.model;
+package br.upe.ppsw.jabberpoint.model.items;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.Presentation;
 
 public class SlideCountItem {
 

@@ -4,7 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import br.upe.ppsw.jabberpoint.model.Slide;
-import br.upe.ppsw.jabberpoint.model.SlideItem;
+import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.view.ContentPanel;
 import br.upe.ppsw.jabberpoint.view.Style;
 import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;

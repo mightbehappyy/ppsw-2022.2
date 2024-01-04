@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import br.upe.ppsw.jabberpoint.model.SlideCountItem;
+import br.upe.ppsw.jabberpoint.model.items.SlideCountItem;
 
 public class SlideCountDrawer {
 
