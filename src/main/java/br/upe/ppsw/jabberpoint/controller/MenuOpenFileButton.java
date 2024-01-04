@@ -22,4 +22,3 @@ public class MenuOpenFileButton extends BaseMenuController {
         accessorStrategy.loadFile(slideViewerFrameInstance, presentationController);
     }
 }
-

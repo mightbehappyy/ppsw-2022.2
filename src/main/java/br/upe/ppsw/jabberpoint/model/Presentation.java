@@ -29,10 +29,6 @@ public class Presentation {
         return instance;
     }
 
-    public static void setInstance(Presentation instance) {
-        Presentation.instance = instance;
-    }
-
     public ContentPanel getContentPanel() {
         return contentPanel;
     }
@@ -56,6 +52,5 @@ public class Presentation {
     public void setShowList(List<Slide> showList) {
         this.showList = showList;
     }
-
 
 }

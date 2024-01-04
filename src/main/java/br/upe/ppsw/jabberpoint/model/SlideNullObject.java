@@ -10,11 +10,7 @@ public class SlideNullObject extends Slide {
 
     public SlideNullObject() {
         setTitle("");
-    }
-
-    @Override
-    public void append(SlideItem anItem) {
-        // Null Object
+        append(new TextItem());
     }
 
     @Override

@@ -47,5 +47,4 @@ public class Slide {
   public int getSize() {
     return items.size();
   }
-
 }

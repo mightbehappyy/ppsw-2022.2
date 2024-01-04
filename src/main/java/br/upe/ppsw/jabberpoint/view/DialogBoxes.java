@@ -26,6 +26,12 @@ public class DialogBoxes {
         "Ocorreu um erro", JOptionPane.INFORMATION_MESSAGE);
   }
 
+  public static void unsupportedExtensionError(String extension) {
+    JOptionPane.showMessageDialog(ApplicationFrame.getInstance(),
+            "Extension " + extension + " is not supported",
+            "Unsupported Extension Error", JOptionPane.ERROR_MESSAGE);
+  }
+
   public static String showGoToPageDialogBox() {
     return JOptionPane.showInputDialog("Número do Slide?");
   }

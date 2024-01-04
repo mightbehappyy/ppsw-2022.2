@@ -28,6 +28,7 @@ public class JSONAccessor implements ILoadable, ISavable {
 
     @Override
     public void loadFile(PresentationController presentationController, String fileName) throws IOException {
+
         try {
             for (Object o : getPresentationItems(parseFile(fileName))) {
                 JSONObject jsonSlide = (JSONObject) o;
@@ -40,6 +41,8 @@ public class JSONAccessor implements ILoadable, ISavable {
 
                 presentationController.addSlide(slide);
             }
+
+
         } catch (IOException | ParseException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.info(e.toString());

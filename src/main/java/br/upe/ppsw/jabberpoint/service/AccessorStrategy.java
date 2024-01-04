@@ -1,10 +1,7 @@
 package br.upe.ppsw.jabberpoint.service;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
-import br.upe.ppsw.jabberpoint.service.acessors.HTMLAccessor;
-import br.upe.ppsw.jabberpoint.service.acessors.JSONAccessor;
-import br.upe.ppsw.jabberpoint.service.acessors.XMLAccessor;
-import br.upe.ppsw.jabberpoint.service.acessors.YAMLAccessor;
+import br.upe.ppsw.jabberpoint.service.acessors.*;
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
@@ -22,7 +19,8 @@ public class AccessorStrategy {
             ".yaml", new YAMLAccessor(),
             ".html", new HTMLAccessor(),
             ".xml", new XMLAccessor(),
-            ".json", new JSONAccessor()
+            ".json", new JSONAccessor(),
+            "default", new DefaultAcessor()
     );
 
     public void loadFile(ApplicationFrame applicationFrame, PresentationController presentationController) {
@@ -31,11 +29,12 @@ public class AccessorStrategy {
             if (response == JFileChooser.APPROVE_OPTION) {
                 Map<String, String> fileInfo = getFileInfo(fileChooser);
 
+                ILoadable accessor = supportedExtensions.getOrDefault(
+                        fileInfo.get("extension"),
+                        supportedExtensions.get("default")
+                );
                 presentationController.clear();
-                supportedExtensions.get(fileInfo
-                        .get("extension"))
-                        .loadFile(presentationController, fileInfo.get("path"));
-
+                accessor.loadFile(presentationController, fileInfo.get("path"));
                 presentationController.setSlideNumber(0);
             }
         } catch (IOException e) {

@@ -61,8 +61,6 @@ public class XMLAccessor implements ILoadable, ISavable {
 
     try {
 
-
-
       DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 
       Document document = builder.parse(new File(filename));
@@ -88,6 +86,7 @@ public class XMLAccessor implements ILoadable, ISavable {
           loadSlideItem(slide, item);
         }
       }
+
 
     } catch (IOException iox) {
       System.err.println(iox.toString());

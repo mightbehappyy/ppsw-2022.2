@@ -49,7 +49,6 @@ public class PresentationController {
 
     public void clear() {
         presentation.setShowList(new ArrayList<>());
-        setSlideNumber(-1);
     }
     public int getSize() {
         return presentation.getShowList().size();

@@ -28,6 +28,7 @@ public class HTMLAccessor implements ILoadable, ISavable {
 
     @Override
     public void loadFile(PresentationController presentationController, String fileName){
+
         try {
             for (Element items : getPresentationItems(fileName)) {
                 Slide slide = new Slide();
@@ -38,6 +39,7 @@ public class HTMLAccessor implements ILoadable, ISavable {
                 presentationController.addSlide(slide);
 
             }
+
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());
             logger.info(e.toString());
