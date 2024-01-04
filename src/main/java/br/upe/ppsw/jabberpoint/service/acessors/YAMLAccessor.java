@@ -1,6 +1,7 @@
 package br.upe.ppsw.jabberpoint.service.acessors;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
@@ -12,7 +13,6 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +21,11 @@ import java.util.Map;
 public class YAMLAccessor implements ILoadable, ISavable {
 
     @Override
-    public void saveFile(PresentationController presentation, String fileName) throws IOException {
+    public void saveFile(Presentation presentation, String fileName) throws IOException {
 
     }
     @Override
-    public void loadFile(PresentationController presentation, String fileName) throws IOException {
+    public void loadFile(PresentationController presentationController, String fileName) throws IOException {
 
         for (Object page : getPresentationItems(parseFile(fileName))) {
             Slide slide = new Slide();
@@ -35,7 +35,7 @@ public class YAMLAccessor implements ILoadable, ISavable {
             for (Object slideItem : (List<Object>) slideMap.get("items")) {
                 slide.append(setSlideItem((LinkedHashMap<String, Object>) slideItem));
             }
-            presentation.append(slide);
+            presentationController.addSlide(slide);
         }
     }
 

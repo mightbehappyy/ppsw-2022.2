@@ -1,5 +1,7 @@
 package br.upe.ppsw.jabberpoint.controller;
 
+import br.upe.ppsw.jabberpoint.model.Presentation;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
@@ -10,8 +12,8 @@ public class KeyActions extends KeyAdapter {
   private final PresentationController presentationController;
   private Map<Integer, Runnable> keyMapping;
 
-  public KeyActions(PresentationController presentationController) {
-    this.presentationController = presentationController;
+  public KeyActions(PresentationController presentation) {
+    this.presentationController = presentation;
     initializekeyMapping();
 
   }

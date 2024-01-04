@@ -7,13 +7,14 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
+import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.service.acessors.XMLAccessor;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
 public class MenuSaveFileButton extends BaseMenuController {
     protected static final String TESTFILE = "classpath:test.xml";
 
-    private static final PresentationController presentationControllerInstance = PresentationController.getInstance();
+    private static final Presentation presentation = Presentation.getInstance();
     private static final ApplicationFrame slideViewerFrameInstance = ApplicationFrame.getInstance();
     private static final String SAVEFILE = "classpath:dump.xml";
 
@@ -25,7 +26,7 @@ public class MenuSaveFileButton extends BaseMenuController {
     protected void setMenuAction(ActionEvent event) {
         try {
             XMLAccessor xmlAccessor = new XMLAccessor();
-            xmlAccessor.saveFile(presentationControllerInstance, SAVEFILE);
+            xmlAccessor.saveFile(presentation, SAVEFILE);
         } catch (IOException exc) {
             JOptionPane.showMessageDialog(slideViewerFrameInstance, "IO Exception: " + exc, "Erro ao salvar",
                     JOptionPane.ERROR_MESSAGE);

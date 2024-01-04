@@ -7,7 +7,10 @@ import java.io.IOException;
 
 abstract class BaseMenuController extends MenuItem {
 
+    protected transient PresentationController presentationController = new PresentationController();
+
     protected abstract void setMenuAction(ActionEvent event);
+
 
     protected BaseMenuController(String buttonPlaceholder, MenuShortcut shortcut) {
         super(buttonPlaceholder, shortcut);

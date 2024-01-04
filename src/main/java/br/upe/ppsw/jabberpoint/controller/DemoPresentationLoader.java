@@ -2,12 +2,13 @@ package br.upe.ppsw.jabberpoint.controller;
 
 import java.io.IOException;
 
+import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.service.acessors.XMLAccessor;
 import br.upe.ppsw.jabberpoint.model.DemoPresentation;
 import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 
 public class DemoPresentationLoader {
-    private final PresentationController presentationController = PresentationController.getInstance();
+    private final PresentationController presentationController = new PresentationController();
 
     public void loadDemoPresentation(String... args) {
         DemoPresentation demo = new DemoPresentation();
@@ -19,7 +20,7 @@ public class DemoPresentationLoader {
                 xmlAccessor.loadFile(presentationController, args[1]);
             }
 
-            PresentationController.getInstance().setSlideNumber(0);
+            presentationController.setSlideNumber(0);
 
         } catch (IOException ex) {
             DialogBoxes.dialogErrorMessage(ex);

@@ -6,7 +6,8 @@ public class SlideCountItem {
 
     private final int xPosition;
     private final int yPosition;
-    private final PresentationController presentationController = PresentationController.getInstance();
+    private final Presentation presentation = Presentation.getInstance();
+    private final PresentationController presentationController = new PresentationController();
 
     public SlideCountItem(int xPosition, int yPosition) {
         this.xPosition = xPosition;
@@ -14,7 +15,7 @@ public class SlideCountItem {
     }
 
     public String getSlideCounter() {
-        return "Slide " + (1 + presentationController.getCurrentSlideNumber()) + " of "
+        return "Slide " + (1 + presentation.getCurrentSlideNumber()) + " of "
                 + presentationController.getSize();
     }
 

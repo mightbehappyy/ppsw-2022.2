@@ -1,6 +1,7 @@
 package br.upe.ppsw.jabberpoint.service.acessors;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
@@ -21,12 +22,12 @@ public class HTMLAccessor implements ILoadable, ISavable {
 
 
     @Override
-    public void saveFile(PresentationController presentation, String fileName) throws IOException {
+    public void saveFile(Presentation presentation, String fileName) throws IOException {
 
     }
 
     @Override
-    public void loadFile(PresentationController presentation, String fileName){
+    public void loadFile(PresentationController presentationController, String fileName){
         try {
             for (Element items : getPresentationItems(fileName)) {
                 Slide slide = new Slide();
@@ -34,8 +35,8 @@ public class HTMLAccessor implements ILoadable, ISavable {
                 for (Element elements : items.children()) {
                     slide.append(setSlideItem(elements));
                 }
+                presentationController.addSlide(slide);
 
-                presentation.append(slide);
             }
         } catch (IOException e) {
             Logger logger = Logger.getLogger(getClass().getName());

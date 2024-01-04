@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import javax.swing.*;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideCountItem;
 import br.upe.ppsw.jabberpoint.view.drawers.SlideDrawer;
@@ -23,7 +24,7 @@ public class ContentPanel extends JPanel {
     this.slideDrawer = new SlideDrawer(this);
     SlideCountItem slidePageCountItem = new SlideCountItem(1100, 20);
     this.slideCountDrawer = new SlideCountDrawer(slidePageCountItem);
-    PresentationController.getInstance().setShowView(this);
+    Presentation.getInstance().setContentPanel(this);
   }
 
   public void update(Slide slide) {
@@ -51,6 +52,8 @@ public class ContentPanel extends JPanel {
     return Math.min(((float) area.width) / (ApplicationFrame.WIDTH),
         ((float) area.height) / (ApplicationFrame.HEIGHT));
   }
+
+
 
   private Rectangle getDrawableArea() {
     return new Rectangle(0, 0, getWidth(), getHeight());

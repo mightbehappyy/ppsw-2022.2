@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
@@ -13,7 +14,7 @@ import org.json.simple.*;
 import org.json.simple.parser.*;
 
 
-import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
 
@@ -21,12 +22,12 @@ public class JSONAccessor implements ILoadable, ISavable {
 
 
     @Override
-    public void saveFile(PresentationController presentation, String fileName) {
+    public void saveFile(Presentation presentation, String fileName) {
         throw new UnsupportedOperationException("Unimplemented method 'loadFile'");
     }
 
     @Override
-    public void loadFile(PresentationController presentation, String fileName) throws IOException {
+    public void loadFile(PresentationController presentationController, String fileName) throws IOException {
         try {
             for (Object o : getPresentationItems(parseFile(fileName))) {
                 JSONObject jsonSlide = (JSONObject) o;
@@ -37,7 +38,7 @@ public class JSONAccessor implements ILoadable, ISavable {
 
                 }
 
-                presentation.append(slide);
+                presentationController.addSlide(slide);
             }
         } catch (IOException | ParseException e) {
             Logger logger = Logger.getLogger(getClass().getName());

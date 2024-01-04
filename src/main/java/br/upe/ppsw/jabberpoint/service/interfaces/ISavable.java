@@ -2,8 +2,8 @@ package br.upe.ppsw.jabberpoint.service.interfaces;
 
 import java.io.IOException;
 
-import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.Presentation;
 
 public interface ISavable {
-    void saveFile(PresentationController presentation, String fileName) throws IOException;
+    void saveFile(Presentation presentation, String fileName) throws IOException;
 }

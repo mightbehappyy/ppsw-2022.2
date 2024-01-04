@@ -8,13 +8,15 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
+import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideItem;
@@ -38,11 +40,11 @@ public class XMLAccessor implements ILoadable, ISavable {
   protected static final String PCE = "Parser Configuration Exception";
   protected static final String UNKNOWNTYPE = "Unknown Element type";
   protected static final String NFE = "Number Format Exception";
-
-  private static XMLAccessor instance = null;
+  private final PresentationController presentationController;
 
   public XMLAccessor() {
     super();
+    this.presentationController = new PresentationController();
   }
 
 
@@ -51,7 +53,7 @@ public class XMLAccessor implements ILoadable, ISavable {
     return titles.item(0).getTextContent();
   }
 
-  public void loadFile(PresentationController presentation, String filename) throws IOException {
+  public void loadFile(PresentationController presentationController, String filename) throws IOException {
     int slideNumber;
     int itemNumber;
     int max = 0;
@@ -75,7 +77,7 @@ public class XMLAccessor implements ILoadable, ISavable {
 
         Slide slide = new Slide();
         slide.setTitle(getTitle(xmlSlide));
-        presentation.append(slide);
+        presentationController.addSlide(slide);
 
         NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
         maxItems = slideItems.getLength();
@@ -124,7 +126,7 @@ public class XMLAccessor implements ILoadable, ISavable {
     }
   }
 
-  public void saveFile(PresentationController presentation, String filename) throws IOException {
+  public void saveFile(Presentation presentation, String filename) throws IOException {
     PrintWriter out = new PrintWriter(new FileWriter(filename));
 
     out.println("<?xml version=\"1.0\"?>");
@@ -134,8 +136,8 @@ public class XMLAccessor implements ILoadable, ISavable {
     out.print("<showtitle>");
     out.println("</showtitle>");
 
-    for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
-      Slide slide = presentation.getSlide(slideNumber);
+    for (int slideNumber = 0; slideNumber < presentationController.getSize(); slideNumber++) {
+      Slide slide = presentationController.getSlide(slideNumber);
 
       out.println("<slide>");
       out.println("<title>" + slide.getTitle() + "</title>");

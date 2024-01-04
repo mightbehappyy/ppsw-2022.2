@@ -1,14 +1,15 @@
 package br.upe.ppsw.jabberpoint.model;
 
 import java.io.FileNotFoundException;
-import org.springframework.util.ResourceUtils;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
+import org.springframework.util.ResourceUtils;
+
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
 
 public class DemoPresentation implements ILoadable, ISavable {
-  public void loadFile(PresentationController presentation, String unusedFilename)
+  public void loadFile(PresentationController presentationController, String unusedFilename)
       throws FileNotFoundException {
 
     Slide slide;
@@ -25,7 +26,7 @@ public class DemoPresentation implements ILoadable, ISavable {
     slide.append(3, "Próximo slide: PgDn ou Enter");
     slide.append(3, "Slide Anterior: PgUp ou up-arrow");
     slide.append(3, "Parar: q ou Q");
-    presentation.append(slide);
+    presentationController.addSlide(slide);
 
     slide = new Slide();
     slide.setTitle("Demonstração dos níveis e estilos de uma apresentação");
@@ -36,7 +37,7 @@ public class DemoPresentation implements ILoadable, ISavable {
     slide.append(2, "Nível 2 tem Estilo número 2");
     slide.append(3, "Este é um ítem de Nível 3");
     slide.append(4, "E este é um ítem de Nível 4");
-    presentation.append(slide);
+    presentationController.addSlide(slide);
 
     slide = new Slide();
     slide.setTitle("Terceiro Slide");
@@ -46,10 +47,10 @@ public class DemoPresentation implements ILoadable, ISavable {
     slide.append(1, "Fim da Apresentação");
     slide.append(
         new ImageItem(1, ResourceUtils.getFile("classpath:JabberPoint.jpg").getAbsolutePath()));
-    presentation.append(slide);
+    presentationController.addSlide(slide);
   }
 
-  public void saveFile(PresentationController presentation, String unusedFilename) {
+  public void saveFile(Presentation presentation, String unusedFilename) {
     throw new IllegalStateException("Não é possível salvar arquivo na versão demo!");
   }
 

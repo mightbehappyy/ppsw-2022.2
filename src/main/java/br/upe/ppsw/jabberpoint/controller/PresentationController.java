@@ -1,84 +1,69 @@
 package br.upe.ppsw.jabberpoint.controller;
 
+import br.upe.ppsw.jabberpoint.model.Presentation;
+import br.upe.ppsw.jabberpoint.model.Slide;
+import br.upe.ppsw.jabberpoint.view.ContentPanel;
+import br.upe.ppsw.jabberpoint.view.DialogBoxes;
+
 import java.util.ArrayList;
 
-import br.upe.ppsw.jabberpoint.model.Slide;
-import br.upe.ppsw.jabberpoint.view.DialogBoxes;
-import br.upe.ppsw.jabberpoint.view.ContentPanel;
 
 public class PresentationController {
 
-  private ArrayList<Slide> showList;
-  private ContentPanel contentPanel;
-  private int currentSlideNumber;
 
-  private static PresentationController instance = null;
+    Presentation presentation = Presentation.getInstance();
 
-  private PresentationController() {
-    clear();
-    currentSlideNumber = 0;
-  }
-
-  public static PresentationController getInstance() {
-    if (instance == null) {
-      instance = new PresentationController();
+    public PresentationController() {
+        // Nothing to add
     }
-    return instance;
-  }
 
-  public int getSize() {
-    return showList.size();
-  }
-
-  public void setSlideNumber(int number) {
-    if (number < getSize()) {
-      currentSlideNumber = number;
-      if (contentPanel != null) {
-        contentPanel.update(getCurrentSlide());
-      }
-    } else {
-      DialogBoxes.showOutOfBoundsError();
+    public void addSlide(Slide slide) {
+        presentation.getShowList().add(slide);
     }
-  }
 
-  public void prevSlide() {
-    if (currentSlideNumber > 0) {
-      setSlideNumber(currentSlideNumber - 1);
+    public void setSlideNumber(int number) {
+        ContentPanel contentPanel = presentation.getContentPanel();
+        if (number < getSize()) {
+            presentation.setCurrentSlideNumber(number);
+            if (contentPanel != null) {
+                contentPanel.update(getCurrentSlide());
+            }
+        } else {
+            DialogBoxes.showOutOfBoundsError();
+        }
     }
-  }
 
-  public void nextSlide() {
-    if (currentSlideNumber < (showList.size() - 1)) {
-      setSlideNumber(currentSlideNumber + 1);
+    public void prevSlide() {
+        int currentSlideNumber = presentation.getCurrentSlideNumber();
+        if (currentSlideNumber > 0) {
+            setSlideNumber(currentSlideNumber - 1);
+        }
     }
-  }
 
-  public void setShowView(ContentPanel contentPanel) {
-    this.contentPanel = contentPanel;
-  }
-
-  public void append(Slide slide) {
-    showList.add(slide);
-  }
-
-  public void clear() {
-    showList = new ArrayList<>();
-    setSlideNumber(-1);
-  }
-
-  public Slide getCurrentSlide() {
-    return getSlide(currentSlideNumber);
-  }
-
-  public int getCurrentSlideNumber() {
-    return currentSlideNumber;
-  }
-
-  public Slide getSlide(int number) {
-    if (number < 0 || number >= getSize()) {
-      return null;
+    public void nextSlide() {
+        int currentSlideNumber = presentation.getCurrentSlideNumber();
+        if (currentSlideNumber < (getSize() - 1)) {
+            setSlideNumber(currentSlideNumber + 1);
+        }
     }
-    return showList.get(number);
-  }
+
+    public void clear() {
+        presentation.setShowList(new ArrayList<>());
+        setSlideNumber(-1);
+    }
+    public int getSize() {
+        return presentation.getShowList().size();
+    }
+
+    public Slide getSlide(int number) {
+        if (number < 0 || number >= getSize()) {
+            return null;
+        }
+        return presentation.getShowList().get(number);
+    }
+
+    public Slide getCurrentSlide() {
+        return getSlide(presentation.getCurrentSlideNumber());
+    }
 
 }
