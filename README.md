@@ -8,11 +8,13 @@
  🚧 Estudo aplicado de padrões de projeto de software 🚀 em construção... 🚧
 </h4>
 <p align="center">
+    <a href="https://wakatime.com/badge/user/018bb0d6-56a3-43d5-85d1-e7b7401fdda3/project/018bb45d-a4fa-4657-82f7-67c8feb8cb57"><img src="https://wakatime.com/badge/user/018bb0d6-56a3-43d5-85d1-e7b7401fdda3/project/018bb45d-a4fa-4657-82f7-67c8feb8cb57.svg" alt="wakatime"></a>
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/mightbehappyy/ppsw-2022.2">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/mightbehappyy/ppsw-2022.2?style=flat-square">
   <a href="https://github.com/upe-garanhuns/ppsw/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/mightbehappyy/ppsw-2022.2">
   </a>
+    
 </p>
 
 ## __Estrutura__
