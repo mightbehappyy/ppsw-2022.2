@@ -13,22 +13,22 @@ import javax.swing.*;
 @SpringBootApplication
 public class JabberPointApplication implements CommandLineRunner {
 
-  public static void main(String[] argv) {
-    SpringApplicationBuilder builder = new SpringApplicationBuilder(JabberPointApplication.class);
-    builder.headless(false);
-    builder.web(WebApplicationType.NONE);
-    builder.run(argv);
-  }
+    public static void main(String[] argv) {
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(JabberPointApplication.class);
+        builder.headless(false);
+        builder.web(WebApplicationType.NONE);
+        builder.run(argv);
+    }
 
-  @Override
-  public void run(String... args) throws Exception {
-    Style.createStyles();
+    @Override
+    public void run(String... args) throws Exception {
+        Style.createStyles();
 
-    ApplicationFrame.setInstance("Jabberpoint");
+        ApplicationFrame.setInstance("Jabberpoint");
 
-    DemoPresentationLoader presentationLoader = new DemoPresentationLoader();
-    presentationLoader.loadDemoPresentation(args);
+        DemoPresentationLoader presentationLoader = new DemoPresentationLoader();
+        presentationLoader.loadDemoPresentation(args);
 
-  }
+    }
 
 }

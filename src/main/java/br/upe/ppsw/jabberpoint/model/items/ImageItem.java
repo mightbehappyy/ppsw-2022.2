@@ -10,37 +10,42 @@ import org.slf4j.LoggerFactory;
 
 public class ImageItem extends SlideItem {
 
-  private BufferedImage bufferedImage;
-  private final String imageFilePath;
-  private static final Logger logger = LoggerFactory.getLogger(ImageItem.class);
+    private BufferedImage bufferedImage;
+    private static final Logger logger = LoggerFactory.getLogger(ImageItem.class);
 
-  protected static final String FILE = "Arquivo ";
-  protected static final String NOTFOUND = " não encontrado";
-
-  public ImageItem(int level, String filePath) {
-    super(level);
-    imageFilePath = filePath;
-    readImage();
-  }
-
-  public void readImage() {
-    try {
-      bufferedImage = ImageIO.read(ResourceUtils.getFile(imageFilePath).getAbsoluteFile());
-    } catch (IOException e) {
-      logger.error("{} {} {}", FILE, imageFilePath, NOTFOUND);
+    public ImageItem(int level, String filePath) {
+        super(level, filePath);
+        readImage();
     }
-  }
 
-  public String getImagePath() {
-    return imageFilePath;
-  }
+    public ImageItem() {
+        super(0, " ");
+    }
 
-  public BufferedImage getBufferedImage() {
-    return bufferedImage;
-  }
+    @Override
+    public void setContent(String content) {
+        this.content = content;
+        readImage();
+    }
 
-  public String toString() {
-    return "ImageItem[" + getLevel() + "," + imageFilePath + "]";
-  }
+    public void readImage() {
+        try {
+            bufferedImage = ImageIO.read(ResourceUtils.getFile(content).getAbsoluteFile());
+        } catch (IOException e) {
+            logger.error("{} {} {}", "Arquivo ", content, " não encontrado");
+        }
+    }
+
+    public String getImagePath() {
+        return content;
+    }
+
+    public BufferedImage getBufferedImage() {
+        return bufferedImage;
+    }
+
+    public String toString() {
+        return "ImageItem[" + getLevel() + "," + content + "]";
+    }
 
 }

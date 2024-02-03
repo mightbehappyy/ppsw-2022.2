@@ -28,7 +28,7 @@ public class DefaultAcessor implements ILoadable, ISavable {
     public void defaultCase(String fileName) {
         File file = new File(fileName);
         String name = file.getName();
-        String extension =  name.substring(name.lastIndexOf("."));
+        String extension = name.substring(name.lastIndexOf("."));
         DialogBoxes.unsupportedExtensionError(extension);
     }
 }

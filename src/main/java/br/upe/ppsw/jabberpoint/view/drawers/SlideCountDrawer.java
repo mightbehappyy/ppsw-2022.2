@@ -19,8 +19,8 @@ public class SlideCountDrawer {
         Font labelFont = new Font("Dialog", Font.BOLD, 10);
         graphics.setFont(labelFont);
         graphics.setColor(Color.BLACK);
-        graphics.drawString(slideCountItem.getSlideCounter(), slideCountItem.getXPostion(),
-                slideCountItem.getYPostion());
+        graphics.drawString(slideCountItem.getSlideCounter(), slideCountItem.getXPosition(),
+                slideCountItem.getYPosition());
     }
 
 }

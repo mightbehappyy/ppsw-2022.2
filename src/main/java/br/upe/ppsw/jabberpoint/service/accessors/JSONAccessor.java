@@ -9,6 +9,7 @@ import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.items.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.items.SlideItem;
+import br.upe.ppsw.jabberpoint.model.items.SlideItemStrategy;
 import br.upe.ppsw.jabberpoint.model.items.TextItem;
 import org.json.simple.*;
 import org.json.simple.parser.*;
@@ -66,12 +67,9 @@ public class JSONAccessor implements ILoadable, ISavable {
         String content = itemObj.get("content").toString();
         int level = Integer.parseInt(itemObj.get("level").toString());
         String kind = itemObj.get("kind").toString();
-        if (kind.equals("text")) {
-            return new TextItem(level, content);
-        } else if (kind.equals("image")) {
-            return new ImageItem(level, content);
-        }
-        return new TextItem();
+
+        SlideItemStrategy slideItemStrategy = new SlideItemStrategy();
+        return slideItemStrategy.getSlideItemKind(kind, content, level);
     }
 
     private void setSlideTitle(JSONObject jsonSlide, Slide slide) {

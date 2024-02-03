@@ -20,11 +20,11 @@ public class SlideCountItem {
                 + presentationController.getSize();
     }
 
-    public int getXPostion() {
+    public int getXPosition() {
         return this.xPosition;
     }
 
-    public int getYPostion() {
+    public int getYPosition() {
         return this.yPosition;
     }
 }

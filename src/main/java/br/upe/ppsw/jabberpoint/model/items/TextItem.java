@@ -16,54 +16,52 @@ import br.upe.ppsw.jabberpoint.view.Style;
 
 public class TextItem extends SlideItem {
 
-  private final String text;
-
-  public TextItem(int level, String string) {
-    super(level);
-    if (string.isEmpty()) {
-      string = " ";
-    }
-    text = string;
-  }
-
-  public TextItem () {
-    super(1);
-    text = " ";
-  }
-
-  public String getText() {
-    return text == null ? "" : text;
-  }
-
-  private AttributedString getAttributedString(Style style, float scale) {
-    AttributedString attributedString = new AttributedString(getText());
-
-    attributedString.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
-
-    return attributedString;
-  }
-
-  public List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
-    List<TextLayout> layouts = new ArrayList<>();
-
-    AttributedString attrStr = getAttributedString(s, scale);
-    Graphics2D g2d = (Graphics2D) g;
-
-    FontRenderContext frc = g2d.getFontRenderContext();
-    LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
-
-    float wrappingWidth = (ApplicationFrame.WIDTH - s.getIndent()) * scale;
-
-    while (measurer.getPosition() < getText().length()) {
-      TextLayout layout = measurer.nextLayout(wrappingWidth);
-      layouts.add(layout);
+    public TextItem(int level, String text) {
+        super(level, text);
     }
 
-    return layouts;
-  }
+    public TextItem() {
+        super(0, " ");
+    }
 
-  public String toString() {
-    return "TextItem[" + getLevel() + "," + getText() + "]";
-  }
+    @Override
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getText() {
+        return content == null ? " " : content;
+    }
+
+    private AttributedString getAttributedString(Style style, float scale) {
+        AttributedString attributedString = new AttributedString(getText());
+
+        attributedString.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, content.length());
+
+        return attributedString;
+    }
+
+    public List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
+        List<TextLayout> layouts = new ArrayList<>();
+
+        AttributedString attrStr = getAttributedString(s, scale);
+        Graphics2D g2d = (Graphics2D) g;
+
+        FontRenderContext frc = g2d.getFontRenderContext();
+        LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
+
+        float wrappingWidth = (ApplicationFrame.WIDTH - s.getIndent()) * scale;
+
+        while (measurer.getPosition() < getText().length()) {
+            TextLayout layout = measurer.nextLayout(wrappingWidth);
+            layouts.add(layout);
+        }
+
+        return layouts;
+    }
+
+    public String toString() {
+        return "TextItem[" + getLevel() + "," + getText() + "]";
+    }
 
 }

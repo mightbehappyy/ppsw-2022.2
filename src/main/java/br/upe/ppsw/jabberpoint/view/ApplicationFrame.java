@@ -8,40 +8,40 @@ import br.upe.ppsw.jabberpoint.controller.KeyController;
 
 public class ApplicationFrame extends JFrame {
 
-  private static final long serialVersionUID = 3227L;
+    private static final long serialVersionUID = 3227L;
 
-  private static ApplicationFrame instance = null;
+    private static ApplicationFrame instance = null;
 
-  public static final int WIDTH = 1200;
-  public static final int HEIGHT = 800;
+    public static final int WIDTH = 1200;
+    public static final int HEIGHT = 800;
 
-  private ApplicationFrame(String title) {
-    super(title);
-    setupWindowFrame();
-  }
-
-  public static void setInstance(String title) {
-    if (instance == null) {
-      instance = new ApplicationFrame(title);
+    private ApplicationFrame(String title) {
+        super(title);
+        setupWindowFrame();
     }
 
-  }
+    public static void setInstance(String title) {
+        if (instance == null) {
+            instance = new ApplicationFrame(title);
+        }
 
-  public static ApplicationFrame getInstance() {
-    return instance;
-  }
+    }
 
-  private void setupWindowFrame() {
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
+    public static ApplicationFrame getInstance() {
+        return instance;
+    }
 
-    add(new ContentPanel());
-    addKeyListener(new KeyController());
-    setMenuBar(new MenuViewer());
-    setSize(new Dimension(WIDTH, HEIGHT));
+    private void setupWindowFrame() {
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-    setLocationRelativeTo(null);
-    setVisible(true);
+        add(new ContentPanel());
+        addKeyListener(new KeyController());
+        setMenuBar(new MenuViewer());
+        setSize(new Dimension(WIDTH, HEIGHT));
 
-  }
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+    }
 
 }
