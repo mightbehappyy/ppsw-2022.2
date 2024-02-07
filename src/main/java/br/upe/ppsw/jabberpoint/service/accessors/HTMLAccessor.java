@@ -1,12 +1,10 @@
-package br.upe.ppsw.jabberpoint.service.acessors;
+package br.upe.ppsw.jabberpoint.service.accessors;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
 import br.upe.ppsw.jabberpoint.model.Presentation;
-import br.upe.ppsw.jabberpoint.model.items.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.model.items.SlideItemStrategy;
-import br.upe.ppsw.jabberpoint.model.items.TextItem;
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
 

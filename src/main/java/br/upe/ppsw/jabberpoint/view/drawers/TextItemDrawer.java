@@ -9,17 +9,16 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 import java.util.List;
 
+import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.model.items.TextItem;
 import br.upe.ppsw.jabberpoint.view.Style;
 import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
 
 public class TextItemDrawer implements IDrawableItem {
 
-    private final TextItem textItem;
 
-    public TextItemDrawer(TextItem slideItem) {
-        this.textItem = slideItem;
-    }
+    private TextItem textItem;
+
 
     @Override
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
@@ -59,6 +58,11 @@ public class TextItemDrawer implements IDrawableItem {
 
             pen.y += (int) layout.getDescent();
         }
+    }
+
+    @Override
+    public void setSlideItem(SlideItem slideItem) {
+        this.textItem = (TextItem) slideItem;
     }
 
 }

@@ -5,16 +5,14 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 import br.upe.ppsw.jabberpoint.model.items.ImageItem;
+import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.view.Style;
 import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
 
 public class ImageItemDrawer implements IDrawableItem {
 
-    private final ImageItem imageItem;
+    private ImageItem imageItem;
 
-    public ImageItemDrawer(ImageItem imageItem) {
-        this.imageItem = imageItem;
-    }
 
     @Override
     public Rectangle getBoundingBox(Graphics graphics, ImageObserver observer, float scale, Style myStyle) {
@@ -32,6 +30,11 @@ public class ImageItemDrawer implements IDrawableItem {
         graphics.drawImage(imageItem.getBufferedImage(), width, height,
                 (int) (imageItem.getBufferedImage().getWidth(observer) * scale),
                 (int) (imageItem.getBufferedImage().getHeight(observer) * scale), observer);
+    }
+
+    @Override
+    public void setSlideItem(SlideItem slideItem) {
+        this.imageItem = (ImageItem) slideItem;
     }
 
 }

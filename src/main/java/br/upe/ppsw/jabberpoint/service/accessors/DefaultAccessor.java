@@ -1,7 +1,6 @@
-package br.upe.ppsw.jabberpoint.service.acessors;
+package br.upe.ppsw.jabberpoint.service.accessors;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
-import br.upe.ppsw.jabberpoint.model.DemoPresentation;
 import br.upe.ppsw.jabberpoint.model.Presentation;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.SlideNullObject;
@@ -12,7 +11,7 @@ import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 import java.io.File;
 import java.io.IOException;
 
-public class DefaultAcessor implements ILoadable, ISavable {
+public class DefaultAccessor implements ILoadable, ISavable {
     @Override
     public void loadFile(PresentationController presentation, String fileName) throws IOException {
         Slide slide = new SlideNullObject();

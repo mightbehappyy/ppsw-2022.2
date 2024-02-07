@@ -23,11 +23,12 @@ public class SlideDrawer {
         Style style;
         int itemHeight = area.y;
         float scale = panel.getScreenScale(area);
+        DrawerCreator drawerCreator = new DrawerCreator();
 
         for (int number = 0; number < slide.getSize(); number++) {
             slideItem = slide.getSlideItems().get(number);
 
-            baseItemDrawer = DrawerCreator.createDrawer(slideItem);
+            baseItemDrawer = drawerCreator.createDrawer(slideItem);
 
             style = Style.getStyle(slideItem.getLevel());
 

@@ -1,27 +1,36 @@
 package br.upe.ppsw.jabberpoint.model.items;
 
+import br.upe.ppsw.jabberpoint.model.interfaces.IContentableItem;
 import br.upe.ppsw.jabberpoint.model.interfaces.ILevelableItem;
 
-public abstract class SlideItem implements ILevelableItem {
+public abstract class SlideItem implements ILevelableItem, IContentableItem {
 
-    private int level = 0;
     protected String content;
+    private int level = 0;
+    private String kind;
 
-    protected SlideItem(int lev, String content) {
+    protected SlideItem(int level, String content, String kind) {
         this.content = content.isEmpty() ? " " : content;
-        level = lev;
+        this.level = level;
+        this.kind = kind;
     }
 
-    protected SlideItem() {
-
+    public String getKind() {
+        return this.kind;
     }
 
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    @Override
     public String getContent() {
-        return content == null ? " " : content;
+        return this.content == null ? " " : this.content;
     }
 
     protected abstract void setContent(String content);
 
+    @Override
     public int getLevel() {
         return level;
     }

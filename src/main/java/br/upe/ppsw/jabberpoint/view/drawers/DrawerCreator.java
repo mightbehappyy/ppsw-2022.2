@@ -1,22 +1,32 @@
 package br.upe.ppsw.jabberpoint.view.drawers;
 
+import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.items.ImageItem;
 import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.model.items.TextItem;
+import br.upe.ppsw.jabberpoint.service.accessors.*;
+import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.view.drawers.interfaces.IDrawableItem;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DrawerCreator {
 
-        private DrawerCreator() {
+        private final Map<String, IDrawableItem> supportedExtensions = Map.of(
+                "image", new ImageItemDrawer(),
+                "text", new TextItemDrawer(),
+                "default", new TextItemDrawer()
+        );
 
-        }
+        public IDrawableItem createDrawer(SlideItem item) {
 
-        public static IDrawableItem createDrawer(SlideItem item) {
-                if (item instanceof ImageItem) {
-                        return new ImageItemDrawer((ImageItem) item);
-                } else if (item instanceof TextItem) {
-                        return new TextItemDrawer((TextItem) item);
-                }
-                throw new IllegalArgumentException("Unsupported item type");
+                IDrawableItem drawableItem = supportedExtensions
+                        .getOrDefault(item.getKind(), supportedExtensions.get("default"));
+
+                drawableItem.setSlideItem(item);
+
+                return drawableItem;
+
         }
 }

@@ -1,7 +1,7 @@
 package br.upe.ppsw.jabberpoint.service;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
-import br.upe.ppsw.jabberpoint.service.acessors.*;
+import br.upe.ppsw.jabberpoint.service.accessors.*;
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 
@@ -20,7 +20,7 @@ public class AccessorStrategy {
             ".html", new HTMLAccessor(),
             ".xml", new XMLAccessor(),
             ".json", new JSONAccessor(),
-            "default", new DefaultAcessor()
+            "default", new DefaultAccessor()
     );
 
     public void loadFile(ApplicationFrame applicationFrame, PresentationController presentationController) {

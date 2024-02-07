@@ -1,4 +1,4 @@
-package br.upe.ppsw.jabberpoint.service.acessors;
+package br.upe.ppsw.jabberpoint.service.accessors;
 
 
 import java.io.FileReader;
@@ -6,11 +6,9 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import br.upe.ppsw.jabberpoint.controller.PresentationController;
-import br.upe.ppsw.jabberpoint.model.items.ImageItem;
 import br.upe.ppsw.jabberpoint.model.Slide;
 import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.model.items.SlideItemStrategy;
-import br.upe.ppsw.jabberpoint.model.items.TextItem;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 

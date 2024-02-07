@@ -1,11 +1,10 @@
-package br.upe.ppsw.jabberpoint.service.acessors;
+package br.upe.ppsw.jabberpoint.service.accessors;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -20,8 +19,6 @@ import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.model.items.TextItem;
 import br.upe.ppsw.jabberpoint.service.interfaces.ILoadable;
 import br.upe.ppsw.jabberpoint.service.interfaces.ISavable;
-
-import static java.util.Arrays.asList;
 
 public class XMLAccessor implements ILoadable, ISavable {
 

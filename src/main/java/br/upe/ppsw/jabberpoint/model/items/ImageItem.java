@@ -14,12 +14,12 @@ public class ImageItem extends SlideItem {
     private static final Logger logger = LoggerFactory.getLogger(ImageItem.class);
 
     public ImageItem(int level, String filePath) {
-        super(level, filePath);
+        super(level, filePath, "image");
         readImage();
     }
 
     public ImageItem() {
-        super(0, " ");
+        super(0, " ", "image");
     }
 
     @Override
