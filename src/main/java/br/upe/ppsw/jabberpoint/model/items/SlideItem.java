@@ -32,7 +32,7 @@ public abstract class SlideItem implements ILevelableItem, IContentableItem {
 
     @Override
     public int getLevel() {
-        return level;
+        return this.level;
     }
 
     public void setLevel(int level) {

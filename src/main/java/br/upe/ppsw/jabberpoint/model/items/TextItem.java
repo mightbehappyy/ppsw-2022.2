@@ -10,7 +10,6 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.upe.ppsw.jabberpoint.model.items.SlideItem;
 import br.upe.ppsw.jabberpoint.view.ApplicationFrame;
 import br.upe.ppsw.jabberpoint.view.Style;
 
@@ -33,14 +32,6 @@ public class TextItem extends SlideItem {
         return content == null ? " " : content;
     }
 
-    private AttributedString getAttributedString(Style style, float scale) {
-        AttributedString attributedString = new AttributedString(getText());
-
-        attributedString.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, content.length());
-
-        return attributedString;
-    }
-
     public List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
         List<TextLayout> layouts = new ArrayList<>();
 
@@ -58,6 +49,14 @@ public class TextItem extends SlideItem {
         }
 
         return layouts;
+    }
+
+    private AttributedString getAttributedString(Style style, float scale) {
+        AttributedString attributedString = new AttributedString(getText());
+
+        attributedString.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, content.length());
+
+        return attributedString;
     }
 
     public String toString() {

@@ -10,12 +10,7 @@ import java.util.ArrayList;
 
 public class PresentationController {
 
-
     Presentation presentation = Presentation.getInstance();
-
-    public PresentationController() {
-        // Nothing to add
-    }
 
     public void addSlide(Slide slide) {
         presentation.getShowList().add(slide);

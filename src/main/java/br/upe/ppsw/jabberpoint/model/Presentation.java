@@ -3,8 +3,6 @@ package br.upe.ppsw.jabberpoint.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.upe.ppsw.jabberpoint.controller.PresentationController;
-import br.upe.ppsw.jabberpoint.view.DialogBoxes;
 import br.upe.ppsw.jabberpoint.view.ContentPanel;
 
 public class Presentation {
